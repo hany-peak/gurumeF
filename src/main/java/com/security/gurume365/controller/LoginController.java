@@ -1,7 +1,10 @@
 package com.security.gurume365.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
+import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.security.gurume365.MailHandler;
 import com.security.gurume365.dao.UsersDAO;
 import com.security.gurume365.vo.Users;
 
@@ -30,7 +34,7 @@ public class LoginController {
 	@Autowired
 	UsersDAO usersDAO;
 	
-	@Autowired
+	@Inject
 	private JavaMailSender mailSender;
 	
 
@@ -68,27 +72,18 @@ public class LoginController {
 
 	@RequestMapping(value="/join/insertUsers",method=RequestMethod.POST)
 	@ResponseBody
-	public void insertUsers(Users users){
+	public void insertUsers(Users users) throws MessagingException, UnsupportedEncodingException{
 		usersDAO.insertUsers(users);
 		
-		String setfrom = "GURUME365";
-		String tomail = users.getId();
 		String title = "GURUME365 ";
-		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-
-			messageHelper.setFrom(setfrom);
-			messageHelper.setTo(tomail);
-			messageHelper.setSubject(title);
-			messageHelper.setText(new StringBuffer().append("ㅁㄴㅇㄹ")
-					.append("http://localhost:8888/gurume365/join/joinPermit?id="+users.getId())
-							.append(" ㅁㄴㅇㄹ").toString());
-			mailSender.send(message);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
+		MailHandler sendMail = new MailHandler(mailSender);
+		sendMail.setSubject(title);
+		sendMail.setText(new StringBuffer().append("<h1>메일 인증</h1>")
+				.append("<a href='https://localhost:8888/gurume365/join/permit?id='"+users.getId())
+				.append("' target='_blank'>이메일 인증 확인</a>").toString());
+		sendMail.setFrom(users.getId(), title);
+		sendMail.setTo(title);
+		sendMail.send();
 	}
 	
 	@RequestMapping(value="/join/joinComplement",method=RequestMethod.GET)
