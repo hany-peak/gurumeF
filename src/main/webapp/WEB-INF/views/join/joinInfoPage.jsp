@@ -56,7 +56,7 @@
 가게번호<input type="text" id="shop_no" >
 </div>
 <div class="category">
-업종<input type="text" id="category" >
+업 종<input type="text" id="category" >
 </div>
 <div class="time_of_open">
 영업시간<input type="text" id="time_of_open">
