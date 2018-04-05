@@ -6,7 +6,6 @@
 
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<title>GURUME365</title>
 		<meta charset="utf-8" />
@@ -123,9 +122,15 @@ $(function() {
 			<div id="main">
 								<p class="mainTitle" style="text-align: center; font-weight: bold;">당신은 지금 어디에 있나요?</p>
 								<div class="w3-center">
-  										<img src="<c:url value="/resources/img/seoul-1.jpg"/>" height="330px" width="417px" class="w3-hover-grayscale">
-  										<img src="<c:url value="/resources/img/busan-1.jpg"/>" height="330px" width="417px" class="w3-hover-grayscale">
-  										<img src="<c:url value="/resources/img/jeju-1.jpg"/>" height="330px" width="417px" class="w3-hover-grayscale" >
+  										<a href="store/storeMain?selector=seoul">
+  											<img src="<c:url value="/resources/img/seoul-1.jpg"/>" height="330px" width="417px" class="w3-hover-grayscale">
+  										</a>
+  										<a href="store/storeMain?selector=busan">
+  											<img src="<c:url value="/resources/img/busan-1.jpg"/>" height="330px" width="417px" class="w3-hover-grayscale">
+  										</a>
+  										<a href="store/storeMain?selector=jeju">
+  											<img src="<c:url value="/resources/img/jeju-1.jpg"/>" height="330px" width="417px" class="w3-hover-grayscale" >
+										</a>
 								</div>
 								<div class="w3-center">
   										<img src="<c:url value="/resources/img/daegu-1.jpg"/>" height="250px" width="250px" class="w3-hover-grayscale">

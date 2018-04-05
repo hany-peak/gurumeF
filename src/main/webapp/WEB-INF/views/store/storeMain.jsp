@@ -71,30 +71,22 @@ body, h1, h2, h3, h4, h5, h6 {
 	</header>
 
 	<!-- First Grid -->
-	<div class="w3-row-padding w3-padding-32 w3-container">
 		<p class="w3-xlarge w3-container w3-center">당신의 특별한 식사를 위해</p>
-		<div class="w3-content">
-			<div class="w3-center image">
+			<div class="w3-center">
+				<a href="store/storeMain">
+				<img src="<c:url value="/resources/img/noshow.png"/>"
+					 height="150px" style=" width: 30%; padding-right:5px; padding-left:20px;" class="w3-hover-grayscale">
+				</a> 
+				
+				<a href="/"> <img src="<c:url value="/resources/img/res.png"/>"
+					height="150px" style=" width: 30%; padding-right: 5px;">
+				</a> 
+				
 				<a href="<c:url value="/"/>"><img
-					src="<c:url value="/resources/img/noshow.png"/>" alt="Avatar"
-					 height="150px"
-					style=" width: 30%; padding-right:5px; padding-left:20px;">
-				</a> 
-				
-				<a href="<c:url value="/"/>"> <img src="<c:url value="/resources/img/res.png"/>"
-					alt="Avatar"  height="150px"
-					style=" width: 30%; padding-right: 5px;">
-				</a> 
-				
-				<a href="<c:url value="/"/>" height="150px"><img
-					src="<c:url value="/resources/img/theme.png"/>" alt=""
-					 height="150px"
-					style="width: 30%; padding-right: 5px;"> 
+					src="<c:url value="/resources/img/theme.png"/>" 
+					 height="150px" style="width: 30%; padding-right: 5px;"> 
 				</a>
-
 			</div>
-		</div>
-	</div>
 
 
 	<!-- Second Grid -->
@@ -105,7 +97,8 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 
 			<div class="w3-twothird">
-				<h1>Lorem Ipsum</h1>
+				<h1>${sessionScope.zone}</h1>
+				
 				<h5 class="w3-padding-32">Lorem ipsum dolor sit amet,
 					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 					labore et dolore magna aliqua. Ut enim ad minim veniam, quis
