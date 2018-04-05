@@ -106,4 +106,14 @@ public class LoginController {
 		return "join/joinPermitComplement";
 	}
 	
+	@RequestMapping(value="/join/idCheck",method=RequestMethod.POST)
+	@ResponseBody
+	public String idCheck(Model model, String id){
+		Users users = usersDAO.selectUsers(id);
+		if(users==null){
+			return "Y";
+		}else{
+			return "N";
+		}
+	}
 }
