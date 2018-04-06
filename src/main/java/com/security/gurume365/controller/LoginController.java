@@ -106,4 +106,13 @@ public class LoginController {
 		return "join/joinPermitComplement";
 	}
 	
+	@RequestMapping(value="/join/infoUpdate", method=RequestMethod.POST)
+	public String infoUpdate(Users user) {
+		
+		usersDAO.updateUsers(user);
+			
+		return "/";
+	}
+	
+	
 }

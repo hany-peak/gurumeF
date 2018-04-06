@@ -6,4 +6,5 @@ public interface UsersMapper {
 	public void insertUsers(Users users);
 	public Users selectUsers(String id);
 	public void permitUsers(Users users);
+	public void updateUsers(Users users);
 }

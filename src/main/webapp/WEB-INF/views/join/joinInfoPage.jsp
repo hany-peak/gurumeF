@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>등록 정보</title>
+<link rel="stylesheet" href="<c:url value="/resources/css/store.css"/>">
 <script type="text/javascript" src="<c:url value='/resources/js/jquery-3.2.1.js'/>"></script>
 <script type="text/javascript">
 	function addressPopup(){
@@ -26,13 +27,23 @@
 		address2.attr("value",addrDetail);	
 		self.close;
 	}
+	function pwcheck(){
+		
+		var password=document.getElementById('password');
+		var password2=document.getElementById('password2');
+		if(password!=password2){
+			alert('비밀번호가 일치하지 않습니다.');
+			return false;
+		}
+		return true;
+	}
 </script>
 </head>
 <body>
 <div>
 <h1>등록 정보 확인</h1>
 </div>
-<form action="regUpdate" method="post" onsubmit="">
+<form action="updateUsers" method="post" onsubmit="return pwcheck();">
 <div class="id">
 이메일<input type="text" id="id" >
 </div>

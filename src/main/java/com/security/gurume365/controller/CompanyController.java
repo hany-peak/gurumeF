@@ -13,7 +13,7 @@ public class CompanyController {
 	
 	
 	@RequestMapping(value="/join/joinInfoPage",method=RequestMethod.GET)
-	public String jusoInfoPage(){
+	public String joinInfoPage(){
 		return "join/joinInfoPage";
 	}
 	
@@ -27,5 +27,11 @@ public class CompanyController {
 	public String jusoPopup(Model model){
 		
 		return "join/jusoData";
+	}
+	
+	@RequestMapping(value="/join/companyInfo", method=RequestMethod.GET)
+	public String companyInfoPage() {
+		
+		return "join/companyInfo";
 	}
 }

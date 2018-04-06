@@ -22,8 +22,15 @@ public class UsersDAO {
 		}
 	}
 	
+	public void updateUsers(Users users) {
+		UsersMapper userMapper=sqlSession.getMapper(UsersMapper.class);
+		try {
+			userMapper.updateUsers(users);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	
-	
+	}
 	
 	public Users selectUsers(String id){
 		UsersMapper mapper = sqlSession.getMapper(UsersMapper.class);
@@ -35,8 +42,6 @@ public class UsersDAO {
 		}
 		return users;
 	}
-	
-	
 	
 	public void permitUsers(Users users){
 		UsersMapper mapper = sqlSession.getMapper(UsersMapper.class);

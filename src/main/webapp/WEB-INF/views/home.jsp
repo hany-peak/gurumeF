@@ -105,6 +105,7 @@ $(function() {
 				<sec:authorize access="isAuthenticated()">
 					<a href="/gurume365/logout">로그아웃</a>
 					<a href="/gurume365/chat/chatRoom">채팅 페이지 시험용</a>
+					<a href="/gurume365/join/joinInfoPage">회원정보</a>
 				</sec:authorize>
 
 			</header>
