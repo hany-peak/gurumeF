@@ -173,13 +173,15 @@ $(function() {
 			$(document).on($.modal.AJAX_SEND, log_modal_event);
 			$(document).on($.modal.AJAX_SUCCESS, log_modal_event);
 			$(document).on($.modal.AJAX_COMPLETE, log_modal_event);
+			
+			
 			$('#loginTest').on('click',function(){
 				$('.inner').attr('style','display: none');
-				$('#banner:before').css('opacity','0.5');
-				});
+				$('html').css('opacity','0.9');
+				}); 
 			$(document).on($.modal.CLOSE,function(){
 				$('.inner').attr('style','');
-				$('#banner:before').css('opacity','0.65');
+				$('html').css('opacity','1');
 				});
 			});
 	</script>
