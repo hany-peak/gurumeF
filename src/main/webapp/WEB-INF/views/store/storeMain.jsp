@@ -30,8 +30,8 @@ body, h1, h2, h3, h4, h5, h6 {
 </style>
 <body>
 	<!-- Navbar -->
-	<div class="w3-top">
-		<div class="w3-bar w3-dark-grey w3-card w3-left-align w3-large">
+	
+		<div style="position: fixed;"class=" w3-bar w3-dark-grey w3-card w3-left-align w3-large">
 			<a
 				class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-light-grey w3-padding-large w3-hover-white w3-large"
 				href="javascript:void(0);" onclick="myFunction()"
@@ -47,7 +47,7 @@ body, h1, h2, h3, h4, h5, h6 {
 				class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link
 				4</a>
 		</div>
-		<div class="w3-top2">
+		<div class="w3-top2" style="margin-top:50;">
 			<a href="#" class="w3-button2 w3-white w3-hover-blue">이벤트</a> <a
 				href="#" class="w3-button2 w3-white w3-hover-blue">추천 테마</a> <a
 				href="#" class="w3-button2 w3-white w3-hover-blue">리뷰</a>
@@ -60,8 +60,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			<a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
 			<a href="#" class="w3-bar-item w3-button w3-padding-large">Link 4</a>
 		</div>
-	</div>
-
+	
 	<!-- Header -->
 	<header class="w3-container w3-light-grey w3-center"
 		style="padding: 80px;">
@@ -73,18 +72,18 @@ body, h1, h2, h3, h4, h5, h6 {
 		<p class="w3-xlarge w3-container w3-center">당신의 특별한 식사를 위해3</p>
 		<div class="w3-content">
 			<div class="w3-center image">
-				<a href="<c:url value="/"/>"><img
+				<a href="thema?selector=noshow"><img
 					src="<c:url value="/resources/img/noshow.png"/>" alt="Avatar"
 					 height="150px"
 					style=" width: 30%; padding-right:5px; padding-left:20px;">
 				</a> 
 				
-				<a href="<c:url value="/"/>"> <img src="<c:url value="/resources/img/res.png"/>"
+				<a href="thema?selector=food"> <img src="<c:url value="/resources/img/res.png"/>"
 					alt="Avatar"  height="150px"
 					style=" width: 30%; padding-right: 5px;">
 				</a> 
 				
-				<a href="<c:url value="/"/>" height="150px"><img
+				<a href="thema?selector=thema" ><img
 					src="<c:url value="/resources/img/theme.png"/>" alt=""
 					 height="150px"
 					style="width: 30%; padding-right: 5px;"> 
@@ -101,7 +100,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 
 			<div class="w3-twothird">
-				<h1>Lorem Ipsum</h1>
+				<h1>${sessionScope.zone} ${sessionScope.thema }</h1>
 				<h5 class="w3-padding-32">Lorem ipsum dolor sit amet,
 					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 					labore et dolore magna aliqua. Ut enim ad minim veniam, quis
