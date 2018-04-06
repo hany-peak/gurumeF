@@ -11,23 +11,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${sessionScope.thema == thema}">
-	테마를 클릭했습니다.
+테마리스트
+	<c:if test="${thema == thema}">
+	v2v
 	${sessionScope }
 	${sessionScope.thema}
 	${sessionScope.zone }
 	</c:if>
-	<c:if test="${sessionScope.thema == food}">
-	음식을 클릭했습니다.
-	${sessionScope }
-	${sessionScope.thema}
-	${sessionScope.zone }
-	</c:if>
-	<c:if test="${sessionScope.thema == noshow}">
-	노쇼를 클릭했습니다.
-	${sessionScope }
-	${sessionScope.thema}
-	${sessionScope.zone }
-	</c:if>
+	
 </body>
 </html>

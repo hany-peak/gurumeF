@@ -76,13 +76,11 @@ body, h1, h2, h3, h4, h5, h6 {
 					src="<c:url value="/resources/img/noshow.png"/>" alt="Avatar"
 					 height="150px"
 					style=" width: 30%; padding-right:5px; padding-left:20px;">
-				</a> 
-				
+				</a> 	
 				<a href="thema?selector=food"> <img src="<c:url value="/resources/img/res.png"/>"
 					alt="Avatar"  height="150px"
 					style=" width: 30%; padding-right: 5px;">
 				</a> 
-				
 				<a href="thema?selector=thema" ><img
 					src="<c:url value="/resources/img/theme.png"/>" alt=""
 					 height="150px"
