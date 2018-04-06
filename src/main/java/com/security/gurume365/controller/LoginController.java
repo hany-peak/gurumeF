@@ -106,12 +106,15 @@ public class LoginController {
 		return "join/joinPermitComplement";
 	}
 	
-	@RequestMapping(value="/join/infoUpdate", method=RequestMethod.POST)
-	public String infoUpdate(Users user) {
+	@RequestMapping(value="/join/updateUsers", method=RequestMethod.POST)
+	public String updateUsers(Model model, String id) {
 		
+		Users user=usersDAO.selectUsers(id);
+		logger.info("컨트롤러 작동1");
 		usersDAO.updateUsers(user);
-			
-		return "/";
+		logger.info("컨트롤러 작동2");
+		model.addAttribute("user", user);	
+		return "redirect:/";
 	}
 	
 	

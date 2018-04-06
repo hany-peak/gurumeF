@@ -31,7 +31,7 @@
 		
 		var password=document.getElementById('password');
 		var password2=document.getElementById('password2');
-		if(password!=password2){
+		if(password.value!=password2.value){
 			alert('비밀번호가 일치하지 않습니다.');
 			return false;
 		}
@@ -43,9 +43,9 @@
 <div>
 <h1>등록 정보 확인</h1>
 </div>
-<form action="updateUsers" method="post" onsubmit="return pwcheck();">
+<form id="updateUsers" action="updateUsers" method="post" onsubmit="return pwcheck();">
 <div class="id">
-이메일<input type="text" id="id" >
+이메일<input type="text" id="id" value="${user.id}">
 </div>
 <div class="password">
 비밀번호<input type="password" id="password">
@@ -62,10 +62,10 @@
 <div class="phone">
 전화번호<input type="text" id="phone" >
 </div>
-</form>
 <div>
 <div><input type="submit" value="수정"></div>
 <div><input type="button" value="취소"></div>
 </div>
+</form>
 </body>
 </html>

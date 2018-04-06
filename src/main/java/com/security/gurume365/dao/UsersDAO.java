@@ -25,7 +25,9 @@ public class UsersDAO {
 	public void updateUsers(Users users) {
 		UsersMapper userMapper=sqlSession.getMapper(UsersMapper.class);
 		try {
+			System.out.println("DAO 작동1");
 			userMapper.updateUsers(users);
+			System.out.println("DAO 작동2");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
