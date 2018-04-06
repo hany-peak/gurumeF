@@ -29,7 +29,6 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 </style>
 <body>
-
 	<!-- Navbar -->
 	<div class="w3-top">
 		<div class="w3-bar w3-dark-grey w3-card w3-left-align w3-large">
@@ -47,9 +46,8 @@ body, h1, h2, h3, h4, h5, h6 {
 				3</a> <a href="#"
 				class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link
 				4</a>
-
 		</div>
-		<div class="w3-top2 ">
+		<div class="w3-top2">
 			<a href="#" class="w3-button2 w3-white w3-hover-blue">이벤트</a> <a
 				href="#" class="w3-button2 w3-white w3-hover-blue">추천 테마</a> <a
 				href="#" class="w3-button2 w3-white w3-hover-blue">리뷰</a>
@@ -71,24 +69,30 @@ body, h1, h2, h3, h4, h5, h6 {
 	</header>
 
 	<!-- First Grid -->
+	<div class="w3-row-padding w3-padding-32 w3-container">
 		<p class="w3-xlarge w3-container w3-center">당신의 특별한 식사를 위해</p>
-			<div class="w3-center">
-				<a href="store/storeMain">
-				<img src="<c:url value="/resources/img/noshow.png"/>"
-					 height="150px" style=" width: 30%; padding-right:5px; padding-left:20px;" class="w3-hover-grayscale">
-				</a> 
-				
-				<a href="/"> <img src="<c:url value="/resources/img/res.png"/>"
-					height="150px" style=" width: 30%; padding-right: 5px;">
-				</a> 
-				
+		<div class="w3-content">
+			<div class="w3-center image">
 				<a href="<c:url value="/"/>"><img
-					src="<c:url value="/resources/img/theme.png"/>" 
-					 height="150px" style="width: 30%; padding-right: 5px;"> 
+					src="<c:url value="/resources/img/noshow.png"/>" alt="Avatar"
+					 height="150px"
+					style=" width: 30%; padding-right:5px; padding-left:20px;">
+				</a> 
+				
+				<a href="<c:url value="/"/>"> <img src="<c:url value="/resources/img/res.png"/>"
+					alt="Avatar"  height="150px"
+					style=" width: 30%; padding-right: 5px;">
+				</a> 
+				
+				<a href="<c:url value="/"/>" height="150px"><img
+					src="<c:url value="/resources/img/theme.png"/>" alt=""
+					 height="150px"
+					style="width: 30%; padding-right: 5px;"> 
 				</a>
+
 			</div>
-
-
+		</div>
+	</div>
 	<!-- Second Grid -->
 	<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
 		<div class="w3-content">
@@ -97,8 +101,7 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 
 			<div class="w3-twothird">
-				<h1>${sessionScope.zone}</h1>
-				
+				<h1>Lorem Ipsum</h1>
 				<h5 class="w3-padding-32">Lorem ipsum dolor sit amet,
 					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 					labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -118,11 +121,9 @@ body, h1, h2, h3, h4, h5, h6 {
 			</div>
 		</div>
 	</div>
-
 	<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
 		<h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
 	</div>
-
 	<!-- Footer -->
 	<footer class="w3-container w3-padding-64 w3-center w3-opacity">
 		<div class="w3-xlarge w3-padding-32">
@@ -148,6 +149,5 @@ body, h1, h2, h3, h4, h5, h6 {
 			}
 		}
 	</script>
-
 </body>
 </html>
