@@ -72,7 +72,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<!-- First Grid -->
 	<div class="w3-row-padding w3-padding-32 w3-container">
-		<p class="w3-xlarge w3-container w3-center">당신의 특별한 식사를 위해</p>
+		<p class="w3-xlarge w3-container w3-center">당신의 특별한 식사를 위해2</p>
 		<div class="w3-content">
 			<div class="w3-center image">
 				<a href="<c:url value="/"/>"><img
