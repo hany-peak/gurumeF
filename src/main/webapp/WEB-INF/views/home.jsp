@@ -97,6 +97,8 @@ $(function() {
 			<header id="header" class="alt">
 				
 				<sec:authorize access="isAnonymous()">
+					<a href="<c:url value="/floor/floor_edit" />">floor-edit</a>
+					<a href="<c:url value="/floor/floor_pop" />">floor-pop</a>
 					<a href="<c:url value="/login/loginForm" />">로그인</a>
 					<a href="<c:url value="/join/joinPermission" />">회원가입</a>
 				</sec:authorize>
