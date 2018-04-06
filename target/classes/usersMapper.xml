@@ -34,4 +34,14 @@
 			where
 		id = #{id}
 	</update>
+	
+	<update id="updateUsers" parameterType="Users">
+		update Users
+			set
+		id=#{id},
+		pw=#{pw},
+		phone=#{phone}
+			where
+		id=#{id}	
+	</update>
 </mapper>
