@@ -117,7 +117,7 @@ public class FloorController {
 			
 			logger.info(table + "");
 		}
-		logger.info(floor + "");
+		
 		
 		// result = floorDAO.
 		
@@ -134,21 +134,28 @@ public class FloorController {
 	@ResponseBody
 	public HashMap<String, Object> loadFloor() {
 		
+		logger.info("1");
+		
+		int shop_no, floor_no;		
 		/* 가게 번호와 플로어 번호를 받아와서 해당 플로어 레이아웃을 반환
 		 * 
 		 * 
 		 * 더미 데이터*/
+		shop_no = 133;
+		floor_no = 1;
 		
 		HashMap<String, Object> jsonMap = new HashMap<>();
 		
-		FloorLayout floor = new FloorLayout(2, 124, 18.5, 25);
+		FloorLayout floor = floorDAO.loadFloor(shop_no, floor_no);
 		ArrayList<FloorTable> tables = new ArrayList<>();
-		tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 23, 77, 40, 40, "rect", 0, 1, 2, 1, ""));
+		/*tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 23, 77, 40, 40, "rect", 0, 1, 2, 1, ""));
 		tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 48, 20, 40, 70, "rect", 0, 2, 4, 2, ""));
-		tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 60, 35, 60, 60, "circle", 0, 4, 6, 3, ""));
-		
+		tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 60, 35, 60, 60, "circle", 0, 4, 6, 3, ""));*/
 		jsonMap.put("floorInfo", floor);
 		jsonMap.put("tablesInfo", tables);
+		
+		logger.info("2");
+		logger.info("" + floor);
 		
 		
 		return jsonMap;

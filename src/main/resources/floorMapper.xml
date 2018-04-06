@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 플로어 관련 SQL -->
+<mapper namespace="com.security.gurume365.mapper.FloorMapper">
+
+	<select id="loadFloor" parameterType="FloorLayout" resultType="FloorLayout">
+		select *
+		from floor_layout where floor_no = #{floor_no} and shop_no = #{shop_no}
+	</select>
+</mapper>
