@@ -1,79 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>채팅룸</title>
-	<script type="text/javascript">
-	 var wsUri = "ws://localhost:8003/gurume365/websocket/echo";
-
-     function init() {
-         output = document.getElementById("output");
-     }
-
-     function send_message() {
-         websocket = new WebSocket(wsUri);
-         websocket.onopen = function(evt) {
-             onOpen(evt)
-         };
-
-         websocket.onmessage = function(evt) {
-             onMessage(evt)
-         };
-         websocket.onerror = function(evt) {
-             onError(evt)
-         };
-     }
-
-
-     function onOpen(evt) {
-         writeToScreen("웹소켓 연결");
-         doSend(textID.value);
-     }
-
-     function onMessage(evt) {
-
-         writeToScreen("받은 메세지: " + evt.data);
-     }
-
-     function onError(evt) {
-
-         writeToScreen('에러발생: ' + evt.data);
-     }
-
-     function doSend(message) {
-
-         writeToScreen("보낸 메세지: " + message);
-         websocket.send(message);
-
-         //websocket.close();
-     }
-
-     function writeToScreen(message) {
-
-         var pre = document.createElement("p");
-         pre.style.wordWrap = "break-word";
-         pre.innerHTML = message;
-        
-         output.appendChild(pre);
-     }
-     window.addEventListener("load", init, false);
- </script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/sockjs-0.3.4.js"/>"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sendBtn").click(function(){
+			sendMessage();
+		});
+	});
+	//웹 소켓을 지정한 URL로 연결
+	//서버랑 연결 -> 에코핸들러로 출력
+	
+	var sock = new SockJS("/gurume365/echo-ws");
+	//웹 소켓 서버에서 메세지를 보내면 자동으로 실행된다
+	//var onMessage = function onMessage //변수
+	sock.onmessage = onMessage;
+	
+	//웹소켓과 연결을 끊고 싶을때 실행하는 메소드
+	sock.onclose = onClose;
+	
+	/* sock.onopen = function(){
+		sock.send($("message").val()+"<br/>");
+	};*/
+	function sendMessage() {
+		//WebSocket으로 메세지를 전달.
+		sock.send($("#message").val()+"<br/>");
+	}
+	//evt 파라메타는 WebSocket이 보내준 데이터다.
+	//변수안에 function넣음, 변수 생략 가능
+	function onMessage(evt) {
+		var data = evt.data;
+		$("#data").append(data);
+		//sock.close();
+	}
+	//var onClose 변수 생략
+	function onClose(evt) {
+		$("data").append("Connection Closed!");
+	}
+</script>
 </head>
 <body>
-	<h1 style="text-align: center;">채팅방 구현</h1>
- 	<br>
-	 <div style="text-align: center;">
-     <form action="">
-         <input type="button" value="Send" onclick="send_message()"  >
-         <input id="textID" name="message" type="text"><br>
-     </form>
- 	</div>
-
- 	<div id="output">
- 	
- 	</div>
-
+	<input type="text" id="message"/>
+	<input type="button" id="sendBtn" value="SEND"/>
+	<div id="data"></div>
 </body>
 </html>
