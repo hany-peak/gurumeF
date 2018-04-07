@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 
-/* 배너 */
 #floatdiv{
 	position: fixed; _position:absolute; _z-index:-1;
 	width:170px;
@@ -34,4 +33,14 @@
 	position: absolute;
 	right: 0px;
 	top: 0px;
+}
+
+.menuMain{
+	background-color: white;
+	opacity: 0.8;
+	
+}
+div{
+	
+	
 }

@@ -8,17 +8,16 @@
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>quickMenu</title>
-		<link rel="stylesheet" href="<c:url value="/resources/css/quicMenu.css"/>">
+		<link rel="stylesheet" href="<c:url value="/resources/css/quickMenu.css"/>">
 		<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 		<script type="text/javascript">
-			var stmnLEFT = 10;//오른쪽여백
+			var stmnLEFT = 50;//오른쪽여백
 			var stmnGAP1 = 0;//위쪽 여백
 			var stmnGAP2 = 150;//스크롤시 브라우저 위쪽과 떨어지는 거리
 			var stmnBASE = 150;//스크롤 시작위치
-			var stmnActivateSpeed = 35;//스크롤을 인식하는 딜레이(숫자 클수록 느림)
+			var stmnActivateSpeed = 30;//스크롤을 인식하는 딜레이(숫자 클수록 느림)
 			var stmnScrollSpeed = 20;//스크롤 속도(클수록 느림)
 			var stmnTimer;
 			
@@ -40,12 +39,23 @@
 				RefreshStaticMenu();
 			}
 		</script>
+		<script type="text/javascript">
+			
+			$("button").click(function () { $("div").remove(); });
+
+		</script>
 	</head>
 		
 	<body onload="InitializeStaticMenu();">
 	
-	<div id="STATICMENU">
+	<div id="STATICMENU" class="menuMain">
 		<!-- 배너 코드 -->
+		<div class="endButtonDiv">
+			<button class="endButton" id="encButton">
+				퀵메뉴 끄기
+			</button>
+			<hr>
+		</div>
 		<div>
 			노쇼 할인 업체
 			<hr>

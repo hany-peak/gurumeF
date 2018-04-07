@@ -19,7 +19,6 @@
 			username-parameter="id" password-parameter="password" />
 		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/" />
 
-
 		<access-denied-handler error-page="/login/accessDenied" />
 	</http>
 	<beans:bean id="authenticationProvider"
