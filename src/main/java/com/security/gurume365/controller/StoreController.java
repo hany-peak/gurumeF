@@ -20,4 +20,9 @@ public class StoreController {
 		
 		return "store/storeMain";
 	}
+	
+	@RequestMapping(value="/store/storeList",method=RequestMethod.GET)
+	public String storeList(){
+		return "store/storeList";
+	}
 }
