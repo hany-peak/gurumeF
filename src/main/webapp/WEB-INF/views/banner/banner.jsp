@@ -49,6 +49,7 @@ body, h1, h2, h3, h4, h5, h6 {
 				<a>
 					<img id="logo" src="<c:url value="/resources/img/Logo_1.jpg"/>">
 				</a>
+			<!-- 이부분에 코딩하시오 -->
 			
 		</div>
 		<div class="w3-top2" style="margin-top:50px;">
