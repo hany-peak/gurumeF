@@ -18,6 +18,10 @@
 		<script type="text/javascript" src="<c:url value="/resources/js/util.js"/>"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/main.js"/>"></script>
 		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+		
 		<script type="text/javascript">
 			var stmnLEFT = 10;//오른쪽여백
 			var stmnGAP1 = 0;//위쪽 여백
@@ -97,7 +101,7 @@ $(function() {
 			<header id="header" class="alt">
 				
 				<sec:authorize access="isAnonymous()">
-					<a href="<c:url value="/login/loginForm" />">로그인</a>
+					<a href="<c:url value="/login/loginForm" />" rel="modal:open" id="loginTest">로그인</a>
 					<a href="<c:url value="/join/joinPermission" />">회원가입</a>
 				</sec:authorize>
 							
@@ -158,6 +162,34 @@ $(function() {
 						<a href="">개인정보 취급방침</a>
 				</div>
 			</footer>
-
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			function log_modal_event(event, modal) {
+				if (typeof console != 'undefined' && console.log)
+					console.log("[event] " + event.type);
+			}
+			;
+			$(document).on($.modal.BEFORE_BLOCK, log_modal_event);
+			$(document).on($.modal.BLOCK, log_modal_event);
+			$(document).on($.modal.BEFORE_OPEN, log_modal_event);
+			$(document).on($.modal.OPEN, log_modal_event);
+			$(document).on($.modal.BEFORE_CLOSE, log_modal_event);
+			$(document).on($.modal.CLOSE, log_modal_event);
+			$(document).on($.modal.AFTER_CLOSE, log_modal_event);
+			$(document).on($.modal.AJAX_SEND, log_modal_event);
+			$(document).on($.modal.AJAX_SUCCESS, log_modal_event);
+			$(document).on($.modal.AJAX_COMPLETE, log_modal_event);
+			
+			
+			$('#loginTest').on('click',function(){
+				$('.inner').attr('style','display: none');
+				$('html').css('opacity','0.9');
+				}); 
+			$(document).on($.modal.CLOSE,function(){
+				$('.inner').attr('style','');
+				$('html').css('opacity','1');
+				});
+			});
+	</script>
 </body>
 </html>
