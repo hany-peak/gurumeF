@@ -177,13 +177,11 @@ $(function() {
 			
 			$('#loginTest').on('click',function(){
 				$('.inner').attr('style','display: none');
-				 $('html').css('opacity','0.9'); 
-				/* $('head').append('<style>#banner:before{opacity:0}</style>'); */
+				$('html').css('opacity','0.9');
 				}); 
 			$(document).on($.modal.CLOSE,function(){
 				$('.inner').attr('style','');
-				 $('html').css('opacity','1'); 
-				/* $('head').append('<style>#banner:before{opacity:0.65}</style>'); */
+				$('html').css('opacity','1');
 				});
 			});
 	</script>
