@@ -10,7 +10,7 @@ public class Users  {
 	private String id;
 	private String pw;
 	private String name;
-	private String date_of_birth;
+	private String dateOfBirth;
 	private String phone;
 	private String permit;
 	private int division;
@@ -20,13 +20,13 @@ public class Users  {
 	public Users() {
 		super();
 	}
-	public Users(String id, String pw, String name, String date_of_birth, String phone, String permit, int division,
+	public Users(String id, String pw, String name, String dateOfBirth, String phone, String permit, int division,
 			int enabled) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		this.date_of_birth = date_of_birth;
+		this.dateOfBirth = dateOfBirth;
 		this.phone = phone;
 		this.permit = permit;
 		this.division = division;
@@ -53,10 +53,10 @@ public class Users  {
 		this.name = name;
 	}
 	public String getDate_of_birth() {
-		return date_of_birth;
+		return dateOfBirth;
 	}
-	public void setDate_of_birth(String date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setDate_of_birth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	public String getPhone() {
 		return phone;
@@ -84,7 +84,7 @@ public class Users  {
 	}
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", pw=" + pw + ", name=" + name + ", date_of_birth=" + date_of_birth + ", phone="
+		return "Users [id=" + id + ", pw=" + pw + ", name=" + name + ", date_of_birth=" + dateOfBirth + ", phone="
 				+ phone + ", permit=" + permit + ", division=" + division + ", enabled=" + enabled + ", authority="
 				 + "]";
 	}

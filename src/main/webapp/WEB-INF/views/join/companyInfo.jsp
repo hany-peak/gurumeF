@@ -25,7 +25,7 @@
 		var address2 = $('#address2');
 		address.attr("value",roadAddrPart1);
 		address2.attr("value",addrDetail);	
-		self.close;
+		self.close();
 	}
 </script>
 </head>
