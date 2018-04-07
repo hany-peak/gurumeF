@@ -30,7 +30,7 @@ import com.security.gurume365.vo.Users;
 @Controller
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	
+	//22
 	@Autowired
 	UsersDAO usersDAO;
 	
