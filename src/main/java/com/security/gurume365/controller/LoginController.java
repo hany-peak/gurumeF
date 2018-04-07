@@ -101,7 +101,6 @@ public class LoginController {
 		return "join/joinPermitComplement";
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value="/join/updateUsers", method=RequestMethod.POST)
 	public String updateUsers(Model model, String id) {
 		
@@ -114,7 +113,6 @@ public class LoginController {
 	}
 	
 	
-=======
 	@RequestMapping(value="/join/idCheck",method=RequestMethod.POST)
 	@ResponseBody
 	public String idCheck(Model model, String id){
@@ -125,5 +123,4 @@ public class LoginController {
 			return "N";
 		}
 	}
->>>>>>> refs/remotes/origin/member_sangeon
 }
