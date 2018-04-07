@@ -22,7 +22,6 @@ public class StoreController {
 		logger.info("상점 상세 페이지 이동 완료");
 		logger.info("데이터1"+selector);
 		session.setAttribute("zone", selector);
-		
 		return "store/storeMain";
 	}
 	
@@ -32,7 +31,6 @@ public class StoreController {
 		logger.info("상점 상세 페이지 이동 완료");
 		session.setAttribute("thema", selector);
 		logger.info("데이터1"+selector);
-		
 		return "store/themaList";
 	}
 }
