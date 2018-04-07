@@ -20,4 +20,11 @@ public class StoreController {
 		
 		return "store/storeMain";
 	}
+	@RequestMapping(value = "/store/storeList", method = RequestMethod.GET)
+	public String storeList(Locale locale, Model model) {
+		logger.info("상점 상세 페이지 이동 완료");
+		
+		return "store/storeList";
+	}
+
 }
