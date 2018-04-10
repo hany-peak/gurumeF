@@ -20,7 +20,7 @@ import com.security.gurume365.vo.Users;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-
+	//커밋
 	static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationProvider.class);
 
 	@Autowired(required = true)

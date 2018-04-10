@@ -12,9 +12,31 @@ $(document).ready(function(){
 	
 	// id 비교
 	$('#email_id').on('blur',idCheck);
-	
+	$('email_domain').on('blur',idCheck);
+	$('#email_select').change(idCheck);
 	function idCheck(){
 		// ajax로 아이디 체크
+		var id = $('#email_id').val()+"@"+$('#email_domain').val();
+		if($('#email_domain').val==""){
+			$('#joinForm_idCheck').text("도메인을 선택해주세요");
+		}
+		$.ajax({
+			url: 'idCheck'
+			,type: 'post'
+			,data: {
+				id: id
+			}
+			,success: function(s){
+				if(s=="Y"){
+					$('#joinForm_idCheck').text("사용 가능");
+				}else if(s=="N"){
+					$('#joinForm_idCheck').text("중복");
+				}
+			}
+			,error: function(err){
+				console.log(err);
+			}
+		});
 	}
 	
 	

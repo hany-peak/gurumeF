@@ -34,11 +34,14 @@
       </beans:property>
     </beans:bean>
     
-    <websocket:handlers>
-        <websocket:mapping path="/websocket/echo" handler="myHandler"/>
-    </websocket:handlers>
-
-    <beans:bean id="myHandler" class="com.security.gurume365.handler.SocketHandler"/>
+    <default-servlet-handler/>
+    
+	<beans:bean id="echoHandler" class="com.security.gurume365.handler.EchoHandler"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo-ws"/>
+		<websocket:sockjs/>
+	</websocket:handlers>
 
 	
 </beans:beans>
