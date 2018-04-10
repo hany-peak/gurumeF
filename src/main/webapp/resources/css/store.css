@@ -262,3 +262,27 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   text-align: center;
 }
 
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+.restImg{
+	background-image: url("../img/restaurant-1.jpg");
+	background-size: 100%;
+}
+.storeTitle{
+	color: white;
+	font-weight: bold;
+}
+#logo{
+	height: 50px;
+	padding-left: 30px;
+}
+
