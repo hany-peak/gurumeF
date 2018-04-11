@@ -64,4 +64,11 @@ public class StoreController {
 		
 		return "forward:storeList";
 	}
+	//샵 기본 정보 페이지로 이동
+	@RequestMapping(value="/store/shopInfo", method = RequestMethod.GET)
+	public String goShopInfo(){
+		logger.info("샵정보로 이동");
+		
+		return "store/store";
+	}
 }

@@ -42,6 +42,10 @@ $('#btn222').on('click', function(){
 	$('.w3-content').append(storeTest);
 	});
 });
+
+function btn333() {
+	location.href = "shopInfo";
+}
 	
 	
 
@@ -88,6 +92,14 @@ $('#btn222').on('click', function(){
 		<h1 class="w3-margin w3-jumbo">지역정보:${zone}//테마 종류:${thema}//음식 종류:${food}</h1>
 	</header>
 	<input type="button" id="btn222" value="????">
+	
+	
+	
+	<!-- 스토어 이동 버튼, 추후 변경 -->
+	<input type="button" onclick="btn333()" value="스토어 페이지로 이동">
+	
+	
+	
 	<!-- First Grid -->
 	<div class="w3-row-padding w3-padding-32 w3-container">
 		<p class="w3-xlarge w3-container w3-center">레스토랑이 총 0개가 검색 되었습니다. </p>
