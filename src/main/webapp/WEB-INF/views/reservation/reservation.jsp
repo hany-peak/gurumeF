@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="<c:url value='/resources/css/jquery.minical.css' />" rel="stylesheet" type="text/css">
 <script src="<c:url value='/resources/js/jquery-3.2.1.js' />"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
@@ -29,10 +31,36 @@ ul, li { list-style: none; }
     </div>
   </div>
 </div>
+<div>
+	<input type="text" id="timepicker">
+</div>
+<div>
+	<input type="button">
+	<input type="text" id="customer" readonly="readonly">
+	<input type="button">
+</div>
+<a><input type="text"></a>
+
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script src="<c:url value='/resources/js/jquery.minical.js' />"></script>
 <script>
+$(document).ready(function(){
+    $('input#timepicker').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 60,
+        minTime: '10',
+        maxTime: '6:00pm',
+        defaultTime: '11',
+        startTime: '10:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+});
 $("form.demo-1 :text").minical();
+
+
 </script>
 
 
