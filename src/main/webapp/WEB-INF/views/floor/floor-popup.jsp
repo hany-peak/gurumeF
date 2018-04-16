@@ -22,35 +22,40 @@ $(function() {
 		type: 'get',
 		dataType: 'json',
 		success: function(dat) {
-			actualH = JSON.stringify(dat.floorInfo.floor_height);
-			actualW = JSON.stringify(dat.floorInfo.floor_width);
+			actualH = JSON.stringify(dat.floorInfo.floorHeight);
+			actualW = JSON.stringify(dat.floorInfo.floorWidth);
 			
 			
 			for(var d of dat.tablesInfo) {
-				tableInfo.push({x: JSON.stringify(d.pos_x), y: JSON.stringify(d.pos_y), height: JSON.stringify(d.length), width: JSON.stringify(d.width), shape: d.table_Shape, angle: JSON.stringify(d.degree), min: JSON.stringify(d.person_min), max: JSON.stringify(d.person_max), ID: ('draggable-table' + JSON.stringify(d.table_no))});
+				tableInfo.push({x: JSON.stringify(d.posX), y: JSON.stringify(d.posY), height: JSON.stringify(d.tableLength), width: JSON.stringify(d.tableWidth), shape: d.tableShape, angle: JSON.stringify(d.degree), min: JSON.stringify(d.personMin), max: JSON.stringify(d.personMax), ID: ('table' + JSON.stringify(d.tableNo))});
 
-				var create_table_no = JSON.stringify(d.table_no);
+				var create_table_no = JSON.stringify(d.tableNo);
 				var html = '' +
 				'<div id="table' + create_table_no + '">' +
 				'</div>';
-				$( '#floor-' ).append(html);
+				$( '#floor-enable' ).append(html);
 				
-				$('#table' + create_table_no).attr('min', JSON.stringify(d.person_min));
-				$('#table' + create_table_no).attr('max', JSON.stringify(d.person_max));
+				$('#table' + create_table_no).attr('min', JSON.stringify(d.personMin));
+				$('#table' + create_table_no).attr('max', JSON.stringify(d.personMax));
 				
-				$('table' + create_table_no).width(JSON.stringify(d.width));
-				$('table' + create_table_no).height(JSON.stringify(d.length));
+				$('#table' + create_table_no).width(JSON.stringify(d.tableWidth));
+				$('#table' + create_table_no).height(JSON.stringify(d.tableLength));
 				
-				$('#table' + create_table_no).addClass('table-' + d.table_shape);
-				$('table' + create_table_no).addClass('table-default');
+				$('#table' + create_table_no).addClass('table-' + d.tableShape);
+				$('#table' + create_table_no).addClass('table-default');
+				$('#table' + create_table_no).addClass('table-btn');
 				
-				console.log(d.pos_x);
+				$('#table' + create_table_no).html(d.personMin + '~' + d.personMax + '명');
+				
+				
+				
+				console.log(d.posX + ',' + d.posY);
 				
 			}
 
 			
 			setSize();
-			alert('불러오기 완료');
+			// alert('불러오기 완료');
 		},
 		error: function(err) {
 			alert('불러오기 오류');
@@ -59,6 +64,8 @@ $(function() {
 	});
 	
 	function setSize() {
+		
+		/* 
 		areaH = $('#floor-div').height();
 		areaW = $('#floor-div').width();
 		if(areaW/areaH > actualW/actualH) {
@@ -76,11 +83,13 @@ $(function() {
 		
 		var t = (areaH-enableH)/2;
 		var l = (areaW-enableW)/2;
-		// alert(t + ',' + l);
 		
 		$('#floor-enable').css( 'top', t );
 		$('#floor-enable').css( 'left', l);
-		
+		 */
+		$('#floor-enable').height('100%');
+		$('#floor-enable').width('100%');
+		 
 		
 		
 		for(var i=0; i<tableInfo.length; i++) {
@@ -89,9 +98,25 @@ $(function() {
 			$('#' + tableInfo[i].ID).css('left', tableInfo[i].x*($('#floor-enable').width()-$('#' + tableInfo[i].ID).width())/100+parseInt($('#floor-enable').css('left')));
 			$('#' + tableInfo[i].ID).css('top', tableInfo[i].y*($('#floor-enable').height()-$('#' + tableInfo[i].ID).height())/100+parseInt($('#floor-enable').css('top')));
 			
-			
+			console.log('#' + tableInfo[i].ID);
 		}
+		
+		$('.table-btn').on('click', function() {
+			alert(this.id);
+		});
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 });
 
@@ -148,6 +173,16 @@ body { height: inherit; width: inherit; margin: 0px; }
 .table-reserv {
 	
 }
+
+.table-btn {
+	text-align: center;
+    display: inline-block;
+	
+}
+
+
+
+
 
 </style>
 

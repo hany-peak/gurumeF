@@ -1,91 +1,91 @@
 package com.security.gurume365.vo;
 
 public class FloorTable {
-	int shop_no;
-	int floor_no;
-	int pos_x, pos_y;
-	double length, width;
-	String table_shape;
+	int shopNo;
+	int floorNo;
+	int posX, posY;
+	double tableLength, tableWidth;
+	String tableShape;
 	int degree;
-	int person_min, person_max;
-	int table_no;
+	int personMin, personMax;
+	int tableNo;
 	String currentsit;
 	
 	public FloorTable() {
-		
+		super();
 	}
 	
-	public FloorTable(int shop_no, int floor_no, int pos_x, int pos_y, double length, double width,
-			String table_shape, int degree, int person_min, int person_max, int table_no, String currentsit) {
+	public FloorTable(int shopNo, int floorNo, int posX, int posY, double tableLength, double tableWidth,
+			String tableShape, int degree, int personMin, int personMax, int tableNo, String currentsit) {
 		super();
-		this.shop_no = shop_no;
-		this.floor_no = floor_no;
-		this.pos_x = pos_x;
-		this.pos_y = pos_y;
-		this.length = length;
-		this.width = width;
-		this.table_shape = table_shape;
+		this.shopNo = shopNo;
+		this.floorNo = floorNo;
+		this.posX = posX;
+		this.posY = posY;
+		this.tableLength = tableLength;
+		this.tableWidth = tableWidth;
+		this.tableShape = tableShape;
 		this.degree = degree;
-		this.person_min = person_min;
-		this.person_max = person_max;
-		this.table_no = table_no;
+		this.personMin = personMin;
+		this.personMax = personMax;
+		this.tableNo = tableNo;
 		this.currentsit = currentsit;
 	}
 
-	public int getShop_no() {
-		return shop_no;
+	public int getShopNo() {
+		return shopNo;
 	}
 
-	public void setShop_no(int shop_no) {
-		this.shop_no = shop_no;
+	public void setShopNo(int shopNo) {
+		this.shopNo = shopNo;
 	}
 
-	public int getFloor_no() {
-		return floor_no;
+	public int getFloorNo() {
+		return floorNo;
 	}
 
-	public void setFloor_no(int floor_no) {
-		this.floor_no = floor_no;
+	public void setFloorNo(int floorNo) {
+		this.floorNo = floorNo;
 	}
 
-	public int getPos_x() {
-		return pos_x;
+	public int getPosX() {
+		return posX;
 	}
 
-	public void setPos_x(int pos_x) {
-		this.pos_x = pos_x;
+	public void setPosX(int posX) {
+		this.posX = posX;
 	}
 
-	public int getPos_y() {
-		return pos_y;
+	public int getPosY() {
+		return posY;
 	}
 
-	public void setPos_y(int pos_y) {
-		this.pos_y = pos_y;
+	public void setPosY(int posY) {
+		this.posY = posY;
 	}
 
-	public double getLength() {
-		return length;
+	public double getTableLength() {
+		return tableLength;
 	}
 
-	public void setLength(double length) {
-		this.length = length;
+	public void setTableLength(double tableLength) {
+		this.tableLength = tableLength;
 	}
 
-	public double getWidth() {
-		return width;
+	public double getTableWidth() {
+		return tableWidth;
 	}
 
-	public void setWidth(double width) {
-		this.width = width;
+	public void setTableWidth(double tableWidth) {
+		this.tableWidth = tableWidth;
 	}
 
-	public String getTable_shape() {
-		return table_shape;
+	public String getTableShape() {
+		return tableShape;
 	}
 
-	public void setTable_shape(String table_shape) {
-		this.table_shape = table_shape;
+	public void setTableShape(String tableShape) {
+		this.tableShape = tableShape;
 	}
 
 	public int getDegree() {
@@ -96,28 +96,28 @@ public class FloorTable {
 		this.degree = degree;
 	}
 
-	public int getPerson_min() {
-		return person_min;
+	public int getPersonMin() {
+		return personMin;
 	}
 
-	public void setPerson_min(int person_min) {
-		this.person_min = person_min;
+	public void setPersonMin(int personMin) {
+		this.personMin = personMin;
 	}
 
-	public int getPerson_max() {
-		return person_max;
+	public int getPersonMax() {
+		return personMax;
 	}
 
-	public void setPerson_max(int person_max) {
-		this.person_max = person_max;
+	public void setPersonMax(int personMax) {
+		this.personMax = personMax;
 	}
 
-	public int getTable_no() {
-		return table_no;
+	public int getTableNo() {
+		return tableNo;
 	}
 
-	public void setTable_no(int table_no) {
-		this.table_no = table_no;
+	public void setTableNo(int tableNo) {
+		this.tableNo = tableNo;
 	}
 
 	public String getCurrentsit() {
@@ -130,10 +130,14 @@ public class FloorTable {
 
 	@Override
 	public String toString() {
-		return "FloorTable [shop_no=" + shop_no + ", floor_no=" + floor_no + ", pos_x=" + pos_x + ", pos_y=" + pos_y
-				+ ", length=" + length + ", width=" + width + ", table_shape=" + table_shape + ", degree=" + degree
-				+ ", person_min=" + person_min + ", person_max=" + person_max + ", table_no=" + table_no
-				+ ", currentsit=" + currentsit + "]";
+		return "FloorTable [shopNo=" + shopNo + ", floorNo=" + floorNo + ", posX=" + posX + ", posY=" + posY
+				+ ", tableLength=" + tableLength + ", tableWidth=" + tableWidth + ", tableShape=" + tableShape
+				+ ", degree=" + degree + ", personMin=" + personMin + ", personMax=" + personMax + ", tableNo="
+				+ tableNo + ", currentsit=" + currentsit + "]";
 	}
-		
+	
+	
+	
+	
+	
 }

@@ -142,12 +142,14 @@
 		</div>
 		
 		<div id="floorinfo-div">
-			<div id="floor-size" align="center">
+			<!-- <div id="floor-size" align="center">
 				&nbsp;&nbsp;세로:<input type="text" id="floor-H" placeholder="">m&nbsp;/
 				&nbsp;가로:<input type="text" id="floor-W" placeholder="">m<br>
 				<button id="setSizeBtn">적용</button>
 				
-			</div>
+			</div> -->
+			
+			<br>
 			<div align="center">
 				<p id="floorSize-info">
 				</p>

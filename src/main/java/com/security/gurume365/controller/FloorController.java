@@ -84,15 +84,16 @@ public class FloorController {
 	
 	@RequestMapping(value = "/floor/saveFloorLayout", method = RequestMethod.POST)
 	@ResponseBody
-	public int saveFloorLayout(String jsonData, int floorNo, double floorH, double floorW, HttpSession session) {
+	public int saveFloor(String jsonData, int floorNo, double floorH, double floorW, HttpSession session) {
 		
 		int result = 0;
+		int shopNo = 143;// 세션에서 받아오는게 좋을까...
 		
 		FloorLayout floor = new FloorLayout();
-		floor.setFloor_no(floorNo);
-		floor.setShop_no(123); // 세션에서 받아오는게 좋을까...
-		floor.setFloor_height(floorH);
-		floor.setFloor_width(floorW);
+		floor.setFloorNo(floorNo);
+		floor.setShopNo(shopNo); 
+		floor.setFloorHeight(floorH);
+		floor.setFloorWidth(floorW);
 		
 		ArrayList<FloorTable> tables = new ArrayList<>();
 		
@@ -103,27 +104,37 @@ public class FloorController {
 		ArrayList<String> strList = new ArrayList<String>(Arrays.asList(jsonStr.split(",")));
 		for(String str : strList) {
 			FloorTable table = new FloorTable();
-			table.setShop_no(floor.getShop_no());
-			table.setFloor_no(floor.getFloor_no());
-			table.setPos_x((int)Double.parseDouble(str.split("/")[0]));
-			table.setPos_y((int)Double.parseDouble(str.split("/")[1]));
-			table.setLength(Integer.parseInt(str.split("/")[2]));
-			table.setWidth(Integer.parseInt(str.split("/")[3]));
-			table.setTable_shape(str.split("/")[4]);
+			table.setShopNo(floor.getShopNo());
+			table.setFloorNo(floor.getFloorNo());
+			table.setPosX((int)Double.parseDouble(str.split("/")[0]));
+			table.setPosY((int)Double.parseDouble(str.split("/")[1]));
+			table.setTableLength(Integer.parseInt(str.split("/")[2]));
+			table.setTableWidth(Integer.parseInt(str.split("/")[3]));
+			table.setTableShape(str.split("/")[4]);
 			table.setDegree((int)Double.parseDouble(str.split("/")[5]));
-			table.setPerson_min(Integer.parseInt(str.split("/")[6]));
-			table.setPerson_max(Integer.parseInt(str.split("/")[7]));
-			table.setTable_no(Integer.parseInt(str.split("/")[8].replaceAll("draggable-table", "")));
-			
+			table.setPersonMin(Integer.parseInt(str.split("/")[6]));
+			table.setPersonMax(Integer.parseInt(str.split("/")[7]));
+			table.setTableNo(Integer.parseInt(str.split("/")[8].replaceAll("draggable-table", "")));
+			table.setCurrentsit("empty");
+			tables.add(table);
 			logger.info(table + "");
 		}
 		
 		
-		// result = floorDAO.
-		
-		
-		
+		for(FloorTable t : tables) {
+			logger.info("그것! : " + t);
+			
+		}
 		/*플로어/테이블 DAO 핸들링*/
+		
+		if(floorDAO.deleteAllTables(shopNo, floorNo)==0) {
+			logger.info("삭제 실패");
+		}
+		else {
+			logger.info("삭제됨");
+		}
+		result = floorDAO.saveFloorTables(tables);
+		
 		
 		
 		return result;
@@ -148,6 +159,7 @@ public class FloorController {
 		
 		FloorLayout floor = floorDAO.loadFloor(shop_no, floor_no);
 		ArrayList<FloorTable> tables = new ArrayList<>();
+		tables = floorDAO.loadTables(shop_no, floor_no);
 		/*tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 23, 77, 40, 40, "rect", 0, 1, 2, 1, ""));
 		tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 48, 20, 40, 70, "rect", 0, 2, 4, 2, ""));
 		tables.add(new FloorTable(floor.getShop_no(), floor.getFloor_no(), 60, 35, 60, 60, "circle", 0, 4, 6, 3, ""));*/
@@ -155,7 +167,7 @@ public class FloorController {
 		jsonMap.put("tablesInfo", tables);
 		
 		logger.info("2");
-		logger.info("" + floor);
+		/*logger.info("" + floor);*/
 		
 		
 		return jsonMap;

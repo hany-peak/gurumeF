@@ -39,27 +39,27 @@ $(function() {
 		type: 'get',
 		dataType: 'json',
 		success: function(dat) {
-			actualH = JSON.stringify(dat.floorInfo.floor_height);
-			actualW = JSON.stringify(dat.floorInfo.floor_width);
+			actualH = JSON.stringify(dat.floorInfo.floorHeight);
+			actualW = JSON.stringify(dat.floorInfo.floorWidth);
 			
 			
 			for(var d of dat.tablesInfo) {	
 				
-				createTable('#draggable-' + d.table_shape,
-						d.pos_x*($('#floor-enable').width()-d.width)/100 +
+				createTable('#draggable-' + d.tableShape,
+						d.posX*($('#floor-enable').width())/100 +
 						parseInt($('#floor-enable').css('left')),
-						d.pos_y*($('#floor-enable').height()-d.length)/100 +
-						parseInt($('#floor-enable').css('top')), JSON.stringify(d.person_min), JSON.stringify(d.person_max), JSON.stringify(d.degree), JSON.stringify(d.length), JSON.stringify(d.width), JSON.stringify(d.table_no));
+						d.posY*($('#floor-enable').height())/100 +
+						parseInt($('#floor-enable').css('top')), JSON.stringify(d.personMin), JSON.stringify(d.personMax), JSON.stringify(d.degree), JSON.stringify(d.tableLength), JSON.stringify(d.tableWidth), JSON.stringify(d.tableNo));
 				
 
 				
-				$('#draggable-table' + JSON.stringify(d.table_no)).width(JSON.stringify(d.width));
-				$('#draggable-table' + JSON.stringify(d.table_no)).height(JSON.stringify(d.length));
-				$('#drag-table' + JSON.stringify(d.table_no)).addClass('drag-table-' + d.table_shape);
+				$('#draggable-table' + JSON.stringify(d.tableNo)).width(JSON.stringify(d.tableWidth));
+				$('#draggable-table' + JSON.stringify(d.tableNo)).height(JSON.stringify(d.tableLength));
+				$('#drag-table' + JSON.stringify(d.tableNo)).addClass('drag-table-' + d.tableShape);
 				
-				$('#draggable-table' + JSON.stringify(d.table_no)).addClass('draggable-table');
+				$('#draggable-table' + JSON.stringify(d.tableNo)).addClass('draggable-table');
 				
-				
+				console.log(d.posX + ',' + d.posY);
 			}
 
 			$('#table-info-table').html('<tr><th>No.</th><th>shape</th><th>min</th><th>max</th><th>del</th></tr>');
@@ -81,7 +81,7 @@ $(function() {
 			
 			
 			setSize();
-			alert('불러오기 완료');
+			// alert('불러오기 완료');
 		},
 		error: function(err) {
 			alert('불러오기 오류');
@@ -135,6 +135,8 @@ $(function() {
 	});
 	
 	function setSize() {
+		
+		/*
 		areaH = $('#floor-div').height();
 		areaW = $('#floor-div').width();
 		if(areaW/areaH > actualW/actualH) {
@@ -152,18 +154,20 @@ $(function() {
 		
 		var t = (areaH-enableH)/2;
 		var l = (areaW-enableW)/2;
-		// alert(t + ',' + l);
 		
 		$('#floor-enable').css( 'top', t );
 		$('#floor-enable').css( 'left', l);
+		*/
+		$('#floor-enable').height('100%');
+		$('#floor-enable').width('100%');
 		
 		
 		
 		for(var i=0; i<tableInfo.length; i++) {
 			/*$('#' + tableID[i]).css('left', (tableX[i]/sizeRatio)+parseInt($('#floor-enable').css('left')));
 			$('#' + tableID[i]).css('top', (tableY[i]/sizeRatio)+parseInt($('#floor-enable').css('top')));*/
-			$('#' + tableInfo[i].ID).css('left', tableInfo[i].x*($('#floor-enable').width()-$('#' + tableInfo[i].ID).width())/100+parseInt($('#floor-enable').css('left')));
-			$('#' + tableInfo[i].ID).css('top', tableInfo[i].y*($('#floor-enable').height()-$('#' + tableInfo[i].ID).height())/100+parseInt($('#floor-enable').css('top')));
+			$('#' + tableInfo[i].ID).css('left', tableInfo[i].x*($('#floor-enable').width())/100+parseInt($('#floor-enable').css('left')));
+			$('#' + tableInfo[i].ID).css('top', tableInfo[i].y*($('#floor-enable').height())/100+parseInt($('#floor-enable').css('top')));
 			
 			
 		}
@@ -335,9 +339,12 @@ $(function() {
             	/*currentDrag = '';*/
 			}
             else {
-            	
+            	setTableInfo();
+            	for(var i=0; i<tableInfo.length; i++) {
+            		console.log(tableInfo[i].x + ',' + tableInfo[i].y);            	
+            	}
             }
-            alert(currentDrag);
+            // alert(currentDrag);
             
 		}
 		
@@ -349,7 +356,6 @@ $(function() {
 			if(currentDrag=="#draggable-circle"||currentDrag=="#draggable-rect") {
 			}
 			else {
-				
 			}
 			
 			/*tableInfo = $('.draggable-table').map(function(idx, elem) {
@@ -372,7 +378,7 @@ $(function() {
 				$(currentDrag).remove();
 				setTableInfo();
 				
-				
+
 				
 				
 				
@@ -483,8 +489,8 @@ $(function() {
 	
 	function setTableInfo() {
 		tableInfo = $('.draggable-table').map(function(idx, elem) {
-			var abX = (parseInt($(elem).css('left')) - parseInt($('#floor-enable').css('left')))/($('#floor-enable').width()-$(elem).width())*100;
-			var abY = (parseInt($(elem).css('top')) - parseInt($('#floor-enable').css('top')))/($('#floor-enable').height()-$(elem).height())*100;
+			var abX = (parseInt($(elem).css('left')) - parseInt($('#floor-enable').css('left')))/($('#floor-enable').width())*100;
+			var abY = (parseInt($(elem).css('top')) - parseInt($('#floor-enable').css('top')))/($('#floor-enable').height())*100;
 			/*var tableHeight;
 			var tableWidth;*/
 			var tableShape = '?';

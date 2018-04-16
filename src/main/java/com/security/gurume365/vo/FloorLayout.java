@@ -1,57 +1,50 @@
 package com.security.gurume365.vo;
 
 public class FloorLayout {
-	int floor_no, shop_no;
-	double floor_height, floor_width;
+	int floorNo, shopNo;
+	double floorHeight, floorWidth;
 	
 	public FloorLayout() {
-		
+		super();
 	}
 	
-	public FloorLayout(int floor_no, int shop_no, double floor_height, double floor_width) {
+	public FloorLayout(int floorNo, int shopNo, double floorHeight, double floorWidth) {
 		super();
-		this.floor_no = floor_no;
-		this.shop_no = shop_no;
-		this.floor_height = floor_height;
-		this.floor_width = floor_width;
+		this.floorNo = floorNo;
+		this.shopNo = shopNo;
+		this.floorHeight = floorHeight;
+		this.floorWidth = floorWidth;
 	}
-
-	public int getFloor_no() {
-		return floor_no;
+	public int getFloorNo() {
+		return floorNo;
 	}
-
-	public void setFloor_no(int floor_no) {
-		this.floor_no = floor_no;
+	public void setFloorNo(int floorNo) {
+		this.floorNo = floorNo;
 	}
-
-	public int getShop_no() {
-		return shop_no;
+	public int getShopNo() {
+		return shopNo;
 	}
-
-	public void setShop_no(int shop_no) {
-		this.shop_no = shop_no;
+	public void setShopNo(int shopNo) {
+		this.shopNo = shopNo;
 	}
-
-	public double getFloor_height() {
-		return floor_height;
+	public double getFloorHeight() {
+		return floorHeight;
 	}
-
-	public void setFloor_height(double floor_height) {
-		this.floor_height = floor_height;
+	public void setFloorHeight(double floorHeight) {
+		this.floorHeight = floorHeight;
 	}
-
-	public double getFloor_width() {
-		return floor_width;
+	public double getFloorWidth() {
+		return floorWidth;
 	}
-
-	public void setFloor_width(double floor_width) {
-		this.floor_width = floor_width;
+	public void setFloorWidth(double floorWidth) {
+		this.floorWidth = floorWidth;
 	}
-
 	@Override
 	public String toString() {
-		return "FloorLayout [floor_no=" + floor_no + ", shop_no=" + shop_no + ", floor_height=" + floor_height
-				+ ", floor_width=" + floor_width + "]";
+		return "FloorLayout [floorNo=" + floorNo + ", shopNo=" + shopNo + ", floorHeight=" + floorHeight
+				+ ", floorWidth=" + floorWidth + "]";
 	}
+	
+	
 	
 }
