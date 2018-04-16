@@ -71,7 +71,7 @@ public class StoreController {
 	//샵 기본 정보 페이지로 이동
 	@RequestMapping(value="/store/shopInfo", method = RequestMethod.GET)
 	public String goShopInfo(Authentication auth, Principal principal, Model model){
-		
+		//깃
 		logger.info("샵정보로 이동");
 		logger.info(""+auth.getAuthorities());
 		logger.info(""+principal.getName());
