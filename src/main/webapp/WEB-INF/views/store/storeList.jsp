@@ -69,14 +69,13 @@ $(function(){
 	    	}
 	    }
 	  })
+$('#btn222').on('click', function(){
+	$('.w3-content').append(storeTest);
+	});
 })
 
 
 	
-$('#btn222').on('click', function(){
-	$('.w3-content').append(storeTest);
-	});
-});
 
 function btn333() {
 	location.href = "shopInfo";
