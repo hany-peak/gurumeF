@@ -35,4 +35,10 @@ public class StoreController {
 		
 		return "store/themaList";
 	}
+	
+	@RequestMapping(value="/store/storeBuildPage", method=RequestMethod.GET)
+	public String storeBuildPage() {
+		
+		return "store/storeBuildPage";
+	}
 }
