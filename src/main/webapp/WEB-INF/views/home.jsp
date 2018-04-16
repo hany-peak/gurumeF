@@ -99,7 +99,7 @@ $(function() {
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				
+				<a href="<c:url value="/floor/floor_edit" />">플로어</a>
 				<sec:authorize access="isAnonymous()">
 					<a href="<c:url value="/login/loginForm" />" rel="modal:open" id="loginTest">로그인</a>
 					<a href="<c:url value="/join/joinPermission" />">회원가입</a>

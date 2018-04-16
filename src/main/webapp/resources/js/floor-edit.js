@@ -1,5 +1,5 @@
 $(function() {
-	
+	jQuery.ajaxSettings.traditional = true;	// ajax로 배열을 보낼 수 있다.
 	
 	var tableC_W = 50;
 	var tableR_W = 60;
@@ -15,6 +15,90 @@ $(function() {
 	var xPos;
 	var yPos;
 	var currentDrag;
+	/*var tableX = new Array();
+	var tableY = new Array();*/
+	
+	/*var tableX;
+	var tableY;
+	var tableShape;
+	var tableAngle;
+	var tablemin;
+	var tablemax;
+	var tableID = $('.draggable-table').map(function(idx, elem) {
+		return elem.id;
+	});*/
+	
+	var tableInfo = $('.draggable-table').map(function(idx, elem) {
+		return {x: 0, y: 0, shape: '?', angle: 0, min: 0, max: 0, ID: '?'};
+	});
+	
+	
+	
+	$.ajax({
+		url: 'loadFloor',
+		type: 'get',
+		dataType: 'json',
+		success: function(dat) {
+			actualH = JSON.stringify(dat.floorInfo.floorHeight);
+			actualW = JSON.stringify(dat.floorInfo.floorWidth);
+			
+			
+			for(var d of dat.tablesInfo) {	
+				
+				createTable('#draggable-' + d.tableShape,
+						d.posX*($('#floor-enable').width())/100 +
+						parseInt($('#floor-enable').css('left')),
+						d.posY*($('#floor-enable').height())/100 +
+						parseInt($('#floor-enable').css('top')), JSON.stringify(d.personMin), JSON.stringify(d.personMax), JSON.stringify(d.degree), JSON.stringify(d.tableLength), JSON.stringify(d.tableWidth), JSON.stringify(d.tableNo));
+				
+
+				
+				$('#draggable-table' + JSON.stringify(d.tableNo)).width(JSON.stringify(d.tableWidth));
+				$('#draggable-table' + JSON.stringify(d.tableNo)).height(JSON.stringify(d.tableLength));
+				$('#drag-table' + JSON.stringify(d.tableNo)).addClass('drag-table-' + d.tableShape);
+				
+				$('#draggable-table' + JSON.stringify(d.tableNo)).addClass('draggable-table');
+				
+				console.log(d.posX + ',' + d.posY);
+			}
+
+			$('#table-info-table').html('<tr><th>No.</th><th>shape</th><th>min</th><th>max</th><th>del</th></tr>');
+			
+			var floorMax = 0;
+			for(var i=0; i<tableInfo.length; i++) {
+				/*console.log(tableInfo[i]);*/
+				var no = tableInfo[i].ID;
+				no = no.replace('draggable-table', '');
+				var html = '<tr><td>' + no + '</td><td>' + tableInfo[i].shape +
+				'</td><td>' + tableInfo[i].min + '</td><td>' + tableInfo[i].max + '</td><td>' +
+				'<button>×</button></td></tr>';
+				$('#table-info-table').append(html);
+				floorMax += parseInt(tableInfo[i].max);
+				console.log(tableInfo[i].shape);
+			}
+			
+			$('#floorTable-info').text('테이블 수: ' + tableInfo.length + ', ' + '최대 수용인원: ' + floorMax + '명');
+			
+			
+			setSize();
+			// alert('불러오기 완료');
+		},
+		error: function(err) {
+			alert('불러오기 오류');
+			console.log(err);
+		}
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	setSize();
@@ -22,34 +106,37 @@ $(function() {
 		setSize();
 	});
 	
+	// 탭 생성, 삭제 기능 추가/ DB에도 floor_name 추가할 것!!
 	$('#setSizeBtn').on('click', function() {
+		
+		var tableInfo = $('.draggable-table').map(function(idx, elem) {
+			return {x: 0, y: 0, shape: '?', angle: 0, min: 0, max: 0, ID: '?'};
+		});
+		/*alert(tableInfo.length);*/
+		
+		if(tableInfo.length!=0) {
+			alert('테이블이 있을 때 플로어를 변경할 수 없습니다.');
+			return;
+		}
+		
+		if(isNaN($('#floor-H').val())||isNaN($('#floor-W').val())) {
+			alert('숫자를 입력하세요.');
+			return;
+		}
+		if($('#floor-H').val()<3||$('#floor-W')<3) {
+			alert('3 이상의 숫자를 입력하세요.');
+			return;
+		}
 		actualH = $('#floor-H').val();
 		actualW = $('#floor-W').val();
 		
-		var floor_no = 1; // 탭 생성, 삭제 기능 추가/ DB에도 floor_name 추가할 것!!
-		
-		$.ajax({
-			url: 'setFloorSize',
-			type: 'post',
-			data: {
-				floorH: actualH,
-				floorW: actualW,
-				floor_no: floor_no
-			},
-			success: function() {
-				alert('성공');
-			},
-			error: function(err) {
-				alert(err);
-			}
-			
-		});
-		
-		
 		setSize();
+		$('#floorSize-info').text('매장 가로: ' + actualW + 'm, ' + '세로: ' + actualH + 'm');
 	});
 	
 	function setSize() {
+		
+		/*
 		areaH = $('#floor-div').height();
 		areaW = $('#floor-div').width();
 		if(areaW/areaH > actualW/actualH) {
@@ -67,10 +154,27 @@ $(function() {
 		
 		var t = (areaH-enableH)/2;
 		var l = (areaW-enableW)/2;
-		// alert(t + ',' + l);
 		
 		$('#floor-enable').css( 'top', t );
 		$('#floor-enable').css( 'left', l);
+		*/
+		$('#floor-enable').height('100%');
+		$('#floor-enable').width('100%');
+		
+		
+		
+		for(var i=0; i<tableInfo.length; i++) {
+			/*$('#' + tableID[i]).css('left', (tableX[i]/sizeRatio)+parseInt($('#floor-enable').css('left')));
+			$('#' + tableID[i]).css('top', (tableY[i]/sizeRatio)+parseInt($('#floor-enable').css('top')));*/
+			$('#' + tableInfo[i].ID).css('left', tableInfo[i].x*($('#floor-enable').width())/100+parseInt($('#floor-enable').css('left')));
+			$('#' + tableInfo[i].ID).css('top', tableInfo[i].y*($('#floor-enable').height())/100+parseInt($('#floor-enable').css('top')));
+			
+			
+		}
+		
+		
+		
+		
 		
 		
 		
@@ -97,7 +201,7 @@ $(function() {
 		$( "#draggable-rect" ).remove();
 		
 		var html = '' +
-			'<div id="draggable-circle">' +
+			'<div id="draggable-circle" min="2" max="5">' +
 				/*'<div id="rotateable-circle">' +
 					'<div id="rotate-circle"></div>' +
 				'</div>' +*/
@@ -105,7 +209,7 @@ $(function() {
 			'</div>';
 		
 		html += 
-		'<div id="draggable-rect">' +
+		'<div id="draggable-rect" min="2" max="4">' +
 			/*'<div id="rotateable-rect">' +
 				'<div id="rotate-rect"></div>' +
 			'</div>' +*/
@@ -193,7 +297,7 @@ $(function() {
 		$('#draggable-rect').css('top', ($('#flooricon-div').height() - $('#draggable-rect').height())/2);
 		
 		$('#draggable-circle').css('left', 20);
-		$('#draggable-rect').css('left', ($('#flooricon-div').width() - $('#floor-size').width())/4);
+		$('#draggable-rect').css('left', $('#flooricon-div').width()/4);
 		
 		
 		$('#draggable-circle').width(tableC_W);
@@ -231,13 +335,16 @@ $(function() {
             	xPos = offset.left;
             	yPos = offset.top;
 
-            	createTable(currentDrag, xPos, yPos);
+            	createTable(currentDrag, xPos, yPos, $(currentDrag).attr('min'), $(currentDrag).attr('max'), 0, $(currentDrag).height(), $(currentDrag).width(), 0);
             	/*currentDrag = '';*/
 			}
             else {
-            	
+            	setTableInfo();
+            	for(var i=0; i<tableInfo.length; i++) {
+            		console.log(tableInfo[i].x + ',' + tableInfo[i].y);            	
+            	}
             }
-            alert(currentDrag);
+            // alert(currentDrag);
             
 		}
 		
@@ -245,12 +352,23 @@ $(function() {
 	
 	$('#floor-edit').droppable({
 		drop: function(event) {
+			setTableIcon();				
 			if(currentDrag=="#draggable-circle"||currentDrag=="#draggable-rect") {
-				setTableIcon();				
 			}
 			else {
-				
 			}
+			
+			/*tableInfo = $('.draggable-table').map(function(idx, elem) {
+				var abX = (parseInt($(elem).css('left')) - parseInt($('#floor-enable').css('left')))/($('#floor-enable').width()-$(elem).width())*100;
+				var abY = (parseInt($(elem).css('top')) - parseInt($('#floor-enable').css('top')))/($('#floor-enable').height()-$(elem).height())*100;
+				return {x: abX, y: abY, shape: '?', angle: 0, min: 2, max: 4, ID: elem.id};
+			});
+			*/
+			
+			
+			
+		
+			
 		}
 	});
 	
@@ -258,105 +376,107 @@ $(function() {
 		drop: function(event) {
 			if(!(currentDrag=="#draggable-circle"||currentDrag=="#draggable-rect")) {
 				$(currentDrag).remove();
+				setTableInfo();
+				
+
+				
+				
+				
+				
 			}
 		}
 	});
 	
 	
 	
-	function createTable(cd, x, y) {
+	function createTable(cd, x, y, mi, ma, deg, h, w, no) {
 		
-		var create_table_no;
-		var table_shape;
-		if(cd=="#draggable-circle") {
+		var create_table_no = 1;
+		
+		if(no == 0) {
+			while(true) {
+				if($('#draggable-table' + create_table_no).length==0) {
+					break;
+				}
+				create_table_no += 1;
+			}
+		}
+		else{
+			create_table_no = no;
+		}
+		
+		/*var tableShape = '?';*/
+		/*var tableAngle = 0;*/
+		/*var tableMin = 2;*/
+		/*var tableMax = 4;*/
+		/*if(cd=="#draggable-circle") {
 			table_shape = "circle";
 		} else if(cd=="#draggable-rect") {
 			table_shape = "rect"
-		}
+		}*/
 		
-		$.ajax({
-			url: 'createTableLayout',
-			type: 'post',
-			data: {xPos: x, yPos: y, shape: table_shape},
-			dataType: 'json',
-			success: function(dat) {
-
-				/*addTableList(dat.no, dat.xPos, dat.yPos, );*/
-				
-				
-				
-				
-				
-				
-				
-
-				create_table_no = dat;
-				
-				var html = '' +
-				'<div id="draggable-table' + create_table_no + '">' +
-				/*'<div id="rotateable-circle">' +
-						'<div id="rotate-circle"></div>' +
-					'</div>' +*/
-				'<div id="drag-table' + create_table_no + '"></div>' +
-				'</div>';
-				$( '#floor-edit' ).append(html);
-				
-				
-				$('#draggable-table' + create_table_no).draggable({
-					handle: '#drag-table' + create_table_no,
-					containment: '#floor-edit',
-					drag: function(event) {
-						currentDrag = "#draggable-table" + create_table_no;
-					}
-				
-				});
-				
-				if(cd=="#draggable-circle") {
-					table_shape = 'circle';
-					$('#draggable-table' + create_table_no).width(tableC_W);
-					$('#draggable-table' + create_table_no).height(tableC_W);
-					$('#drag-table' + create_table_no).css('border-radius', '50%');
-				}
-				else if(cd=="#draggable-rect") {
-					table_shape = 'rect';
-					$('#draggable-table' + create_table_no).width(tableR_W);
-					$('#draggable-table' + create_table_no).height(tableR_H);
-					$('#drag-table' + create_table_no).css('border-radius', '3%');
-				}
-				
-				
-				$('#draggable-table' + create_table_no).css('position', 'absolute');
-				$('#draggable-table' + create_table_no).css('top', y);
-				$('#draggable-table' + create_table_no).css('left', x);
-				
-				
-				$('#drag-table' + create_table_no).width('100%');
-				$('#drag-table' + create_table_no).height('100%');
-				$('#drag-table' + create_table_no).css('position', 'absolute');
-				$('#drag-table' + create_table_no).css('background-color', '#808080');
-				$('#drag-table' + create_table_no).css('border', '1px solid #ff0000');
-				
-				/*alert(cd + '');*/
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			},error: function(err) {
-				console.log(err);
+		var html = '' +
+		'<div id="draggable-table' + create_table_no + '">' +
+		/*'<div id="rotateable-circle">' +
+				'<div id="rotate-circle"></div>' +
+			'</div>' +*/
+		'<div id="drag-table' + create_table_no + '"></div>' +
+		'</div>';
+		$( '#floor-edit' ).append(html);
+		
+		$('#draggable-table' + create_table_no).attr('min', mi);
+		$('#draggable-table' + create_table_no).attr('max', ma);
+		
+		
+		$('#draggable-table' + create_table_no).draggable({
+			handle: '#drag-table' + create_table_no,
+			containment: '#floor-edit',
+			drag: function(event) {
+				currentDrag = "#draggable-table" + create_table_no;
 			}
-			
+		
 		});
 		
-		
+		if(cd=="#draggable-circle") {
+			/*tableShape = 'circle';*/
+			$('#draggable-table' + create_table_no).width(w);
+			$('#draggable-table' + create_table_no).height(w);
+			/*$('#drag-table' + create_table_no).css('border-radius', '50%');*/
+			
+			/*$('#draggable-table' + create_table_no).addClass('draggable-table');*/
+			$('#drag-table' + create_table_no).addClass('drag-table-circle');
+		}
+		else if(cd=="#draggable-rect") {
+			/*tableShape = 'rect';*/
+			$('#draggable-table' + create_table_no).width(w);
+			$('#draggable-table' + create_table_no).height(h);
 
+			/*$('#draggable-table' + create_table_no).addClass('draggable-table');*/
+			$('#drag-table' + create_table_no).addClass('drag-table-rect');
+			/*$('#drag-table' + create_table_no).css('border-radius', '3%');*/
+		}
+		
+		
+		/*$('#draggable-table' + create_table_no).css('position', 'absolute');*/
+		$('#draggable-table' + create_table_no).css('top', y);
+		$('#draggable-table' + create_table_no).css('left', x);
+		$('#draggable-table' + create_table_no).addClass('draggable-table');
+		
+		/*$('#drag-table' + create_table_no).width('100%');
+		$('#drag-table' + create_table_no).height('100%');
+		$('#drag-table' + create_table_no).css('position', 'absolute');
+		$('#drag-table' + create_table_no).css('background-color', '#808080');
+		$('#drag-table' + create_table_no).css('border', '1px solid #ff0000');*/
+		
+		/*alert(cd + '');*/
+		
+		
+		
+		setTableInfo();
+		
+		
+		
+		
 		
 		
 		
@@ -367,9 +487,92 @@ $(function() {
 	
 	
 	
+	function setTableInfo() {
+		tableInfo = $('.draggable-table').map(function(idx, elem) {
+			var abX = (parseInt($(elem).css('left')) - parseInt($('#floor-enable').css('left')))/($('#floor-enable').width())*100;
+			var abY = (parseInt($(elem).css('top')) - parseInt($('#floor-enable').css('top')))/($('#floor-enable').height())*100;
+			/*var tableHeight;
+			var tableWidth;*/
+			var tableShape = '?';
+			var tableAngle = 0;
+			var tableMin = $(elem).attr('min');
+			var tableMax = $(elem).attr('max');
+			
+			if($('#drag-table' + elem.id.replace('draggable-table', '')).hasClass('drag-table-circle')) {
+				tableShape = 'circle';
+			}
+			else if($('#drag-table' + elem.id.replace('draggable-table', '')).hasClass('drag-table-rect')) {
+				tableShape = 'rect';
+			}
+			
+			return {x: abX, y: abY, height: $(elem).height(), width: $(elem).width(), shape: tableShape, angle: tableAngle, min: tableMin, max: tableMax, ID: elem.id};
+		});
+		
+		$('#table-info-table').html('<tr><th>No.</th><th>shape</th><th>min</th><th>max</th><th>del</th></tr>');
+		
+		var floorMax = 0;
+		for(var i=0; i<tableInfo.length; i++) {
+			/*console.log(tableInfo[i]);*/
+			var no = tableInfo[i].ID;
+			no = no.replace('draggable-table', '');
+			var html = '<tr><td>' + no + '</td><td>' + tableInfo[i].shape +
+			'</td><td>' + tableInfo[i].min + '</td><td>' + tableInfo[i].max + '</td><td>' +
+			'<button>×</button></td></tr>';
+			$('#table-info-table').append(html);
+			floorMax += parseInt(tableInfo[i].max);
+		}
+		
+		$('#floorTable-info').text('테이블 수: ' + tableInfo.length + ', ' + '최대 수용인원: ' + floorMax + '명');
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	$('#saveFloorLayout').on('click', function() {
+		
+		
+		var jsonData = new Array();
+		
+		
+		for(var i=0; i<tableInfo.length; i++) {
+			var str = tableInfo[i].x + '/' + tableInfo[i].y + '/' + 
+			tableInfo[i].height + '/' + tableInfo[i].width + '/' + tableInfo[i].shape + '/' + 
+			tableInfo[i].angle + '/' + tableInfo[i].min + '/' + tableInfo[i].max + '/' + tableInfo[i].ID;
+			
+			jsonData.push(str);
+		}
+		alert(JSON.stringify(jsonData));
+		
+		
+		$.ajax({
+			url:'saveFloorLayout',
+			type: 'post',
+			dataType: 'text',
+			data: {
+				jsonData: JSON.stringify(jsonData),
+				floorNo: 1,
+				floorH: actualH,
+				floorW: actualW
+				
+			},
+			success: function(dat) {
+				alert(dat);
+			},
+			error: function(err) {
+				console.log(err);
+			}
+			
+		});
+	});
 	
 	
 });
+
+
 
 
 

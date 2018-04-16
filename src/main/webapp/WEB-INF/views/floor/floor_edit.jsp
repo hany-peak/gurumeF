@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<%-- <script src="<c:url value='/resources/js/jquery-3.2.1.js' />"></script> --%>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -66,9 +66,8 @@
 	
 	#floor-size
 	{
-		height: 100%;
-		width: 150px;
-		float: right;
+		/* height: 50px; */
+		width: 100%;
 		background-color: gray;
 	}
 	
@@ -86,8 +85,11 @@
 	}
 	#setSizeBtn
 	{
-		float: right;
-		margin-right: 20px;
+		/* float: left; */
+	}
+	
+	#saveFloorLayout
+	{
 	}
 	
 </style>
@@ -114,21 +116,7 @@
 		
 		<div id="flooricon-div">
 		
-			<div id="floor-size">
-				<ul>
-					<li>
-						세로:<input type="text" id="floor-H" placeholder=""> m
-					</li>
-					<li>
-						가로:<input type="text" id="floor-W" placeholder=""> m
-					</li>
-					
-				</ul>
-				
-				<button id="setSizeBtn">적용</button>
-				
-			</div>
-			
+						
 			
 		
 		</div>
@@ -145,27 +133,31 @@
 
 	<div id="info-div">
 	
-		<div id="tableinfo-div">
-			
+		<div id="tableinfo-div" align="center">
+			<table id="table-info-table">
+				<tr>
+					<th>No.</th><th>shape</th><th>min</th><th>max</th><th>del</th>
+				</tr>
+			</table>
 		</div>
 		
 		<div id="floorinfo-div">
-			<br>
-			<ul>
-				<li>
-					세로&nbsp;길이&nbsp;:&nbsp;${floor_H},&nbsp;가로&nbsp;길이&nbsp;:&nbsp;${floor_W}
-				</li>
-				<%-- <li>
-					${}
-				</li>
-				<li>
-					${}
-				</li>
-				<li>
-					${}
-				</li> --%>
+			<!-- <div id="floor-size" align="center">
+				&nbsp;&nbsp;세로:<input type="text" id="floor-H" placeholder="">m&nbsp;/
+				&nbsp;가로:<input type="text" id="floor-W" placeholder="">m<br>
+				<button id="setSizeBtn">적용</button>
 				
-			</ul>
+			</div> -->
+			
+			<br>
+			<div align="center">
+				<p id="floorSize-info">
+				</p>
+				<p id="floorTable-info">
+				</p>
+				<button id="saveFloorLayout">저장</button>
+				<button href="">돌아가기</button>
+			</div>
 		</div>
 	
 	</div>
