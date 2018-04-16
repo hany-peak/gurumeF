@@ -1,13 +1,17 @@
 package com.security.gurume365.controller;
 
+import java.security.Principal;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -66,9 +70,16 @@ public class StoreController {
 	}
 	//샵 기본 정보 페이지로 이동
 	@RequestMapping(value="/store/shopInfo", method = RequestMethod.GET)
-	public String goShopInfo(){
+	public String goShopInfo(Authentication auth, Principal principal, Model model){
+		
 		logger.info("샵정보로 이동");
+		logger.info(""+auth.getAuthorities());
+		logger.info(""+principal.getName());
+		logger.info(""+principal.toString());
+
+		
 		
 		return "store/store";
 	}
+	
 }

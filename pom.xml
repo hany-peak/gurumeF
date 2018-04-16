@@ -122,6 +122,12 @@
            <artifactId>spring-websocket</artifactId>
            <version>${org.springframework-version}</version>
 		</dependency>
+		<!-- STOMP 사용시 필요함 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-messaging</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
 		
 		<!-- Commons-dbcp 추가(db연결) -->
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
