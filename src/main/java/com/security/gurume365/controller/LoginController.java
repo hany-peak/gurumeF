@@ -102,13 +102,11 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/join/updateUsers", method=RequestMethod.POST)
-	public String updateUsers(Model model, String id) {
-		
+	public String updateUsers(String id) {
 		Users user=usersDAO.selectUsers(id);
 		logger.info("컨트롤러 작동1");
 		usersDAO.updateUsers(user);
 		logger.info("컨트롤러 작동2");
-		model.addAttribute("user", user);	
 		return "redirect:/";
 	}
 	

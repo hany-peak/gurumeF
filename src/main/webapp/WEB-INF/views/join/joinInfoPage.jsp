@@ -30,24 +30,7 @@ padding-top: 15px;
 }
 </style>	
 <script type="text/javascript">
-	function addressPopup(){
-		var url="jusoPopup"
-		window.open(url,"","width=400,height=400,left=600");
-	}
-	function addressCallback(roadFullAddr,roadAddrPart1,addrDetail,
-			roadAddrPart2,engAddr,jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,
-			bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,
-			lnbrMnnm,lnbrSlno,emdNo){
-		
-		document.form.roadAddrPart1.value=roadAddrPart1;
-		document.form.addrDetail.value=addrDetail;
-		
-		var address = $('#address');
-		var address2 = $('#address2');
-		address.attr("value",roadAddrPart1);
-		address2.attr("value",addrDetail);	
-		self.close;
-	}
+	
 	function pwcheck(){
 		
 		var password=document.getElementById('password');
@@ -73,19 +56,19 @@ padding-top: 15px;
 <div style="margin-top: 100px; margin-left: 580px;">
 <form id="updateUsers" action="updateUsers" method="post" onsubmit="return pwcheck();" class="form">
 <div class="id" >
-이메일<input type="text" id="id" value="${user.id}" style="margin-left: 70px;">
+이메일<input type="text" id="id" value="${user.id}"  style="margin-left: 70px;">
 </div>
 <div class="password" >
-비밀번호<input type="password" id="password" style="margin-left: 50px;">
+비밀번호<input type="password" id="password"  style="margin-left: 50px;">
 </div>
 <div class="password2" >
 비밀번호 확인<input type="password" id="password2" style="margin-left: 8px;">
 </div>
 <div class="name" >
-이름<input type="text" id="name" style="margin-left: 86px;">
+이름<input type="text" id="name"  style="margin-left: 86px;">
 </div>
 <div class="date_of_birth" >
-생년월일<input type="text" id="date_of_birth" style="margin-left: 50px;">
+생년월일<input type="text" id="date_of_birth"  style="margin-left: 50px;">
 </div>
 <div class="phone" >
 전화번호<input type="text" id="phone" style="margin-left: 50px;">
@@ -97,6 +80,9 @@ padding-top: 15px;
 </div>
 
 </form>
+
+<a href="usersOutconfirm">회원탈퇴</a>
+
 </div>
 
 </body>
