@@ -73,6 +73,14 @@ $(function(){
 
 
 	
+$('#btn222').on('click', function(){
+	$('.w3-content').append(storeTest);
+	});
+});
+
+function btn333() {
+	location.href = "shopInfo";
+}
 	
 	
 
@@ -116,12 +124,27 @@ $(function(){
 	<!-- Header -->
 	<header class="w3-container w3-light-grey w3-center"
 		style="padding: 80px;">
-		<h1 class="w3-margin w3-jumbo">한식</h1>
+		<h1 class="w3-margin w3-jumbo">지역정보:${zone}//테마 종류:${thema}//음식 종류:${food}</h1>
 	</header>
+<<<<<<< HEAD
 	<a href="<c:url value="/reservation/reservation" />" rel="modal:open"><input type="button" id="btn222" value="????"></a>
+=======
+	<input type="button" id="btn222" value="????">
+	
+	
+	
+	<!-- 스토어 이동 버튼, 추후 변경 -->
+	<input type="button" onclick="btn333()" value="스토어 페이지로 이동">
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/inspiration33/gurumeF
 	<!-- First Grid -->
 	<div class="w3-row-padding w3-padding-32 w3-container">
-		<p class="w3-xlarge w3-container w3-center">레스토랑이 총 0개가 검색 되었습니다.</p>
+		<p class="w3-xlarge w3-container w3-center">레스토랑이 총 0개가 검색 되었습니다. </p>
+		<c:if test="${noshow != null }">
+		<p class="w3-xlarge w3-container w3-center">노쇼노쇼노쇼</p>
+		</c:if>
 		<div class="w3-content" style="height: 80%; width: 500px; background-color: gray;">
 
 			

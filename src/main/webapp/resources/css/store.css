@@ -262,3 +262,60 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   text-align: center;
 }
 
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lato", sans-serif
+}
+
+.w3-bar, h1, button {
+	font-family: "Montserrat", sans-serif
+}
+
+.fa-anchor, .fa-coffee {
+	font-size: 200px
+}
+.restImg{
+	background-image: url("../img/restaurant-1.jpg");
+	background-size: 100%;
+}
+.storeTitle{
+	color: white;
+	font-weight: bold;
+}
+#logo{
+	height: 50px;
+	padding-left: 30px;
+}
+
+#livechat-compact-container {
+  height: 153px;
+  position: fixed;
+  right: 0;
+  top: 200px;
+  top: 30vh;
+  z-index: 10000;
+}
+.btn-chat a {
+  font-family: arial;
+  color: #fff;
+  text-decoration: none;
+  background: #1798F7;
+  padding: 24px 20px 8px;
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 0 0 1px #03b2ff inset;
+  border: 1px solid #144866;
+  border-radius: 2px;
+  -ms-transform: rotate(90deg) translate(0, -20px);
+  -webkit-transform: rotate(90deg) translate(0, -20px);
+  transform: rotate(90deg) translate(0, -20px);
+  position: relative;
+  right: -27px;
+  transition: background 0.2s, right 0.2s;
+}
+.btn-chat a:hover {
+  background: #47B6F5;
+  right: -20px;
+  transition: background 0.2s, right 0.2s;
+}
+
