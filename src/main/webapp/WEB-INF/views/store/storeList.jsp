@@ -36,10 +36,16 @@ body, h1, h2, h3, h4, h5, h6 {
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 <script type="text/javascript">
 $(function(){
-	var storeTest = '<div style="width:152px; height:200px; margin-bottom: 10px; margin-left: 7px; margin-right: 7px; float: left; background-color: green;" >';
-	storeTest += '<div class="" style="width:152px; height: 130px; border: 1px solid;"></div>';
-	storeTest += '<div style="float:left; width: 70px; height: 30px; margin-left: 5px; margin-right: 5px; margin-top: 30px; margin-bottom: 10px; background-color: white;"></div>';
-	storeTest += '<div style="float:right width: 70px; height: 30px; margin-left: 5px; margin-right: 5px; margin-top: 30px; margin-bottom: 10px; background-color: blue;"></div></div>';
+	var a = $('#hidden').attr('a');
+	var pic = $('#hidden').attr('pic');
+	var cname= $('#hidden').attr('cname');
+	var address= $('#hidden').attr('addr');
+	var category= $('#hidden').attr('cat');
+	alert(pic+a);
+	var storeTest = '<div style="width:252px; height:400px; margin-bottom: 10px; margin-left: 2px; margin-right: 27px; float: left; background-color: green;">';
+	storeTest += '<div class="" style="width:252px; height: 280px; border: 1px solid;"><img src="<c:url value="/resources/img/'+pic+'"/>"><h6 style="marjin-top:132px">'+cname+'</h6><h6>'+address+'</h6><h6></h6><h6 style="margin-top: 158px">'+category+'</h6></div>';
+	storeTest += '<div style="float:left; width: 126px; height: 30px; margin-left: 5px; margin-right: 5px; margin-top: 85px; background-color: white;"><input type="button"; value="예약하기"; onclick="reserve();"></div>';
+	storeTest += '<div style="float:right width: 126px; height: 30px; margin-left: 5px; margin-right: 5px; margin-top: 85px; background-color: blue;"><input type="button"; value="코멘트" onclick="comment();"></div></div>';
 	var j = 1;
 	  $(document).scroll(function() {
 	    var maxHeight = $(document).height()-500;
@@ -125,9 +131,7 @@ function btn333() {
 		style="padding: 80px;">
 		<h1 class="w3-margin w3-jumbo">지역정보:${zone}//테마 종류:${thema}//음식 종류:${food}</h1>
 	</header>
-<<<<<<< HEAD
 	<a href="<c:url value="/reservation/reservation" />" rel="modal:open"><input type="button" id="btn222" value="????"></a>
-=======
 	<input type="button" id="btn222" value="????">
 	
 	
@@ -137,14 +141,13 @@ function btn333() {
 	
 	
 	
->>>>>>> branch 'master' of https://github.com/inspiration33/gurumeF
 	<!-- First Grid -->
-	<div class="w3-row-padding w3-padding-32 w3-container">
+	<div class="w3-row-padding w3-padding-32 w3-container" style="margin-right: 400px">
 		<p class="w3-xlarge w3-container w3-center">레스토랑이 총 0개가 검색 되었습니다. </p>
 		<c:if test="${noshow != null }">
 		<p class="w3-xlarge w3-container w3-center">노쇼노쇼노쇼</p>
 		</c:if>
-		<div class="w3-content" style="height: 80%; width: 500px; background-color: gray;">
+		<div class="w3-content" style="height: 80%; width: 1000px; background-color: gray; margin-left: 135px;">
 
 			
 		</div>
@@ -209,7 +212,7 @@ function btn333() {
 				$('.modal').attr('style','position:relative');
 			});
 			})
-	</script>	
-
+	</script>	 
+<input type="hidden" id="hidden" a="${store.id}" cname="${store.companyName}" pic="${store.picture}" addr="${store.address}" cat="${store.category}">
 </body>
 </html>

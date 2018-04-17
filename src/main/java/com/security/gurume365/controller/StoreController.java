@@ -15,6 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.security.gurume365.vo.Store;
+import com.security.gurume365.vo.Users;
+
 @Controller
 public class StoreController {
 	
@@ -41,6 +44,9 @@ public class StoreController {
 		//노쇼리스트로 갈 경우 바로 스토어 리스트로 진입하게 된다.
 		}else if (selector.equals("noshow")){
 			logger.info("노쇼리스트로 갑니다");
+			Store store=new Store("33","가게1","1","가게1 주소","111-111",101,"중식","오전7시","가게1 정보","2",2500000,"블라블라","load.png");
+			model.addAttribute("store", store);
+			System.out.println(store);
 			model.addAttribute("noshow", "noshow");
 			return "store/storeList";
 		//푸드리스트로 갈 경우 바로 스토어 리스트로 가지 않고 하나를 더 거친다.
@@ -58,6 +64,7 @@ public class StoreController {
 		model.addAttribute("zone", session.getAttribute("zone"));
 		model.addAttribute("thema", session.getAttribute("thema"));
 		model.addAttribute("food", food);
+		
 		
 		return "store/storeList";
 	}
