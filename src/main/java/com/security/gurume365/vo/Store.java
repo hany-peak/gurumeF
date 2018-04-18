@@ -16,11 +16,12 @@ public class Store {
 	private int budjet;
 	private String comment;
 	private String picture;
+	private int reservation;
 	private int hits;
 
 	public Store(String id, String companyName, String companyNo, String address1, String address2, String phone,
 			int shopNo, String category, String timeOfOpen, String shopInfo, String grade, int budjet, String comment,
-			String picture, int hits) {
+			String picture, int reservation, int hits) {
 		super();
 		this.id = id;
 		this.companyName = companyName;
@@ -36,6 +37,7 @@ public class Store {
 		this.budjet = budjet;
 		this.comment = comment;
 		this.picture = picture;
+		this.reservation = reservation;
 		this.hits = hits;
 	}
 	
@@ -145,10 +147,8 @@ public class Store {
 		return "Store [id=" + id + ", companyName=" + companyName + ", companyNo=" + companyNo + ", address1="
 				+ address1 + ", address2=" + address2 + ", phone=" + phone + ", shopNo=" + shopNo + ", category="
 				+ category + ", timeOfOpen=" + timeOfOpen + ", shopInfo=" + shopInfo + ", grade=" + grade + ", budjet="
-				+ budjet + ", comment=" + comment + ", picture=" + picture + ", hits=" + hits + "]";
+				+ budjet + ", comment=" + comment + ", picture=" + picture + ", reservation=" + reservation + ", hits="
+				+ hits + "]";
 	}
-
-	
-	
 	
 }

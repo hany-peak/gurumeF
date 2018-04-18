@@ -21,6 +21,7 @@
 			,budjet
 			,comment
 			,picture
+			,reservation
 			,hits		
 		)values(
 			#{id}
@@ -37,6 +38,7 @@
 			,#{budjet}
 			,#{comment}
 			,#{picture}
+			,#{reservation}
 			,#{hits}	
 		)	
 	</insert>
@@ -53,6 +55,7 @@
 			,category
 			,grade
 			,hits
+			,reservation
 			,shopInfo
 		from 
 			restaurants
@@ -68,6 +71,7 @@
 			,category
 			,grade
 			,hits
+			,reservation
 			,shopInfo
 		from 
 			restaurants
@@ -83,11 +87,28 @@
 			,category
 			,grade
 			,hits
+			,reservation
 			,shopInfo
 		from 
 			restaurants
 		where 
 			order by hits desc
+	</select>
+	
+	<select id="resList" resultType="Store">
+		select 
+			picture
+			,companyName
+			,address1
+			,category
+			,grade
+			,hits
+			,reservation
+			,shopInfo
+		from 
+			restaurants
+		where 
+			order by hits reservation
 	</select>
 	
 </mapper>

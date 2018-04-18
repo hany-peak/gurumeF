@@ -69,6 +69,16 @@ public class StoreDAO {
 		return slist;	
 	}
 	
+	public ArrayList<Store> resList(){
+		StoreMapper mapper=sqlsession.getMapper(StoreMapper.class);
+		ArrayList<Store>slist=new ArrayList<>();
+		try {
+			slist=mapper.hitsList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}	
+		return slist;	
+	}
 	
 	
 		

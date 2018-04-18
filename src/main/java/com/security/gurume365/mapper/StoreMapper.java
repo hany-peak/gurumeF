@@ -16,4 +16,6 @@ public interface StoreMapper {
 	
 	public ArrayList<Store> hitsList();
 	
+	public ArrayList<Store> resList();
+	
 }
