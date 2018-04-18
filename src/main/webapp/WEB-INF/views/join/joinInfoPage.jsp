@@ -92,8 +92,6 @@
 			var e_address1 = document.getElementById("address");
 			var e_address2 = document.getElementById("address2");
 			
-			
-			
 			var cnt = 0;
 			var e_company_no_all = '';
 			for(var i=0; i<e_company_no.length; i++) {
@@ -244,7 +242,7 @@
 		
 		<sec:authorize access="hasRole('ROLE_LICENSEE')">
 					
-			<!-- <div class="addBusinessDiv" style="">
+			 <div class="addBusinessDiv" style="">
 
 				<h3>사업장 추가</h3>
 				
@@ -287,7 +285,7 @@
 				<button id="addBusinessBtn" style="margin-bottom: 4px;">추가</button>
 				</div>
 				
-			</div>	 -->
+			</div>	 
 			
 		</sec:authorize>
 	
