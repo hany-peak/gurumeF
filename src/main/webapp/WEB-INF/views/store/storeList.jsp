@@ -40,12 +40,12 @@ $(function(){
 	var a = $('#hidden').attr('a');
 	var pic = $('#hidden').attr('pic');
 	var cname= $('#hidden').attr('cname');
-	var address= $('#hidden').attr('addr');
+	var address1= $('#hidden').attr('addr');
 	var category= $('#hidden').attr('cat');
 	var info= $('#hidden').attr('info');
 	alert(pic+a);
 	var storeTest = '<div style="width:252px; height:400px; margin-bottom: 10px; margin-left: 2px; margin-right: 27px; float: left; background-color: green;">';
-	storeTest += '<div class="" style="width:252px; height: 280px; border: 1px solid;"><img src="<c:url value="/resources/img/'+pic+'"/>"><h6 style="marjin-top:132px">'+cname+'</h6><h6>'+address+'</h6><h6 style="margin-top: 150px; margin-left: 126px">'+category+'</h6><h6 style="margin-top:25px">'+info+'</h6></div>';
+	storeTest += '<div class="" style="width:252px; height: 280px; border: 1px solid;"><img src="<c:url value="/resources/img/'+pic+'"/>"><h6 style="marjin-top:132px">'+cname+'</h6><h6>'+address1+'</h6><h6 style="margin-top: 150px; margin-left: 126px">'+category+'</h6><h6 style="margin-top:25px">'+info+'</h6></div>';
 	storeTest += '<div style="float:left; width: 126px; height: 30px; margin-left: 5px; margin-right: 5px; margin-top: 85px; background-color: white;"><input type="button"; value="예약하기"; onclick="reserve();"></div>';
 	storeTest += '<div style="float:right width: 126px; height: 30px; margin-left: 5px; margin-right: 5px; margin-top: 85px; background-color: blue;"><input type="button"; value="코멘트" onclick="comment();"></div></div>';
 	var j = 1;
@@ -215,6 +215,6 @@ function btn333() {
 			});
 			})
 	</script>	 
-<input type="hidden" id="hidden" a="${store.id}" cname="${store.companyName}" pic="${store.picture}" addr="${store.address}" info="${store.shopInfo}" cat="${store.category}">
+<input type="hidden" id="hidden" a="${store.id}" cname="${store.companyName}" pic="${store.picture}" addr="${store.address1}" info="${store.shopInfo}" cat="${store.category}">
 </body>
 </html>

@@ -44,7 +44,7 @@ public class StoreController {
 		//노쇼리스트로 갈 경우 바로 스토어 리스트로 진입하게 된다.
 		}else if (selector.equals("noshow")){
 			logger.info("노쇼리스트로 갑니다");
-			Store store=new Store("33","가게1","1","가게1 주소","111-111",101,"중식","오전7시","가게1 정보","2",2500000,"블라블라","load.png");
+			Store store=new Store("33","가게1","1","가게 주소1","가게 주소2","111-111",101,"중식","오전7시","가게1 정보","2",2500000,"블라블라","load.png",2,3);
 			model.addAttribute("store", store);
 			System.out.println(store);
 			model.addAttribute("noshow", "noshow");
@@ -64,8 +64,7 @@ public class StoreController {
 		model.addAttribute("zone", session.getAttribute("zone"));
 		model.addAttribute("thema", session.getAttribute("thema"));
 		model.addAttribute("food", food);
-		
-		
+			
 		return "store/storeList";
 	}
 	//음식 종류별 레스토랑으로 들어왔을 경우 여기서 선택된 음식 정보를 받는다.
@@ -84,8 +83,6 @@ public class StoreController {
 		logger.info(""+principal.getName());
 		logger.info(""+principal.toString());
 
-		
-		
 		return "store/store";
 	}
 	

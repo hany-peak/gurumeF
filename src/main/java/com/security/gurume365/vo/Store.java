@@ -118,6 +118,14 @@ public class Store {
 		this.picture = picture;
 	}
 
+	public int getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(int reservation) {
+		this.reservation = reservation;
+	}
+
 	public int getHits() {
 		return hits;
 	}

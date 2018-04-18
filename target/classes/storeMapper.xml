@@ -6,7 +6,7 @@
 <mapper namespace="com.security.gurume365.mapper.StoreMapper">
 
 	<insert id="insertStore" parameterType="Store">
-		insert into store(
+		insert into restaurants(
 			id
 			,companyName
 			,comapanyNo
@@ -44,7 +44,7 @@
 	</insert>
 	
 	<select id="selectStore" parameterType="string" resultType="Store">
-		select * from store where id=#{id}	
+		select * from restaurants where id=#{id}	
 	</select>
 
 	<select id="storeList" resultType="Store">
@@ -58,7 +58,7 @@
 			,reservation
 			,shopInfo
 		from 
-			store
+			restaurants
 		where 
 			order by shopNo desc	 
 	</select>
@@ -74,7 +74,7 @@
 			,reservation
 			,shopInfo
 		from 
-			store
+			restaurants
 		where 
 			order by grade desc
 	</select>
@@ -90,7 +90,7 @@
 			,reservation
 			,shopInfo
 		from 
-			store
+			restaurants
 		where 
 			order by hits desc
 	</select>
@@ -106,7 +106,7 @@
 			,reservation
 			,shopInfo
 		from 
-			store
+			restaurants
 		where 
 			order by hits reservation
 	</select>
