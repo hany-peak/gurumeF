@@ -7,6 +7,12 @@
 <title>업체 생성</title>
 </head>
 <body>
-<h1></h1>
+<h1>업체 생성</h1>
+
+<form>
+
+
+</form>
+
 </body>
 </html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.security.gurume365.mapper.StoreMapper">
+
+	<insert id="insertStore" parameterType="Store">
+		insert into restaurants(
+			id
+			,companyName
+			,comapanyNo
+			,address1
+			,address2
+			,phone
+			,shopNo
+			,category
+			,timeOfOpen
+			,shopInfo
+			,grade
+			,budjet
+			,comment
+			,picture
+			,hits		
+		)values(
+			#{id}
+			,#{companyName}
+			,#{comapanyNo}
+			,#{address1}
+			,#{address2}
+			,#{phone}
+			,shopNo_seq.nextval
+			,#{category}
+			,#{timeOfOpen}
+			,#{shopInfo}
+			,#{grade}
+			,#{budjet}
+			,#{comment}
+			,#{picture}
+			,#{hits}	
+		)	
+	</insert>
+	
+	<select id="selectStore" parameterType="string" resultType="Store">
+		select * from restaurants where id=#{id}	
+	</select>
+
+	<select id="storeList" resultType="Store">
+		select 
+			picture
+			,companyName
+			,address1
+			,category
+			,grade
+			,hits
+			,shopInfo
+		from 
+			restaurants
+		where 
+			order by shopNo desc	 
+	</select>
+	
+	<select id="gradeList" resultType="Store">
+		select 
+			picture
+			,companyName
+			,address1
+			,category
+			,grade
+			,hits
+			,shopInfo
+		from 
+			restaurants
+		where 
+			order by grade desc
+	</select>
+	
+	<select id="hitsList" resultType="Store">
+		select 
+			picture
+			,companyName
+			,address1
+			,category
+			,grade
+			,hits
+			,shopInfo
+		from 
+			restaurants
+		where 
+			order by hits desc
+	</select>
+	
+</mapper>

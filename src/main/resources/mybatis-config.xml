@@ -10,6 +10,7 @@
     <typeAliases>
 		<typeAlias type="com.security.gurume365.vo.Users" alias="Users"/>
 		<typeAlias type="com.security.gurume365.vo.Member" alias="Member"/>
+		<typeAlias type="com.security.gurume365.vo.Store" alias="Store"/>
 		<typeAlias type="com.security.gurume365.vo.FloorLayout" alias="Floor"/>
 		<typeAlias type="com.security.gurume365.vo.FloorTable" alias="Tables"/>
 	</typeAliases>
