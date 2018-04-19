@@ -205,7 +205,7 @@
 			<ul>
 				<li>
 					<div class="id">
-						이메일<input type="text" id="id" value="${user.id}">
+						이메일<input type="text" id="id" value="${id}">
 					</div>
 				</li>
 				<li>
@@ -220,29 +220,29 @@
 				</li>
 				<li>
 					<div class="name">
-						이름<input type="text" id="name">
+						이름<input type="text" id="name" value="${name}">
 					</div>
 				</li>
 				<li>
 					<div>
-						생년월일<input type="text" id="date_of_birth">
+						생년월일<input type="text" id="date_of_birth" value="${birth}">
 					</div>
 				</li>	
 				<li>
 					<div class="phone">
-						전화번호<input type="text" id="phone" >
+						전화번호<input type="text" id="phone" value="${phone}">
 					</div>
 				</li>	
 			</ul>
-			</form>
 			<div>
 			<div><input type="submit" value="수정"><input type="button" value="취소"></div>
 			</div>
+			</form>	
 		</div>
 		
 		<sec:authorize access="hasRole('ROLE_LICENSEE')">
 					
-			 <div class="addBusinessDiv" style="">
+			 <!-- <div class="addBusinessDiv" style="">
 
 				<h3>사업장 추가</h3>
 				
@@ -285,7 +285,7 @@
 				<button id="addBusinessBtn" style="margin-bottom: 4px;">추가</button>
 				</div>
 				
-			</div>	 
+			</div>	 --> 
 			
 		</sec:authorize>
 	

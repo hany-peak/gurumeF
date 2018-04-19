@@ -1,6 +1,7 @@
 package com.security.gurume365.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -123,4 +124,5 @@ public class LoginController {
 			return "N";
 		}
 	}
+	
 }

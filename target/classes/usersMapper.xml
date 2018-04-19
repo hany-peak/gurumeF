@@ -38,7 +38,6 @@
 	<update id="updateUsers" parameterType="Users">
 		update Users
 			set
-		id=#{id},
 		pw=#{pw},
 		phone=#{phone}
 			where
